@@ -9,7 +9,12 @@ set :deploy_to, '/home/collabowrite/collabowrite'
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-load 'lib/deploy/seed'
+namespace :deploy do
+  desc "reload the database with seed data"
+  task :seed, :roles => :db do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
+end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
