@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'users#show', as: :authenticated_root
+      root 'users#profile', as: :authenticated_root
+      get 'profile' => "users#profile"
     end
 
     unauthenticated do
