@@ -1,0 +1,32 @@
+<%= form_for script, html: { multipart: true } do |f| %>
+  <% if script.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(script.errors.count, "error") %> prohibited this script from being saved:</h2>
+
+      <ul>
+      <% script.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pdf %>
+    <%= f.file_field :pdf %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
