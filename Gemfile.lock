@@ -133,6 +133,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    pdf-core (0.6.1)
+    pdf-inspector (1.2.1)
+      pdf-reader (~> 1.0)
     pdf-reader (1.4.1)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.1)
@@ -140,6 +143,9 @@ GEM
       ruby-rc4
       ttfunk
     pg (0.19.0)
+    prawn (2.1.0)
+      pdf-core (~> 0.6.1)
+      ttfunk (~> 1.4.0)
     puma (3.7.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -234,8 +240,10 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   paperclip
+  pdf-inspector
   pdf-reader
   pg (~> 0.18)
+  prawn
   puma (~> 3.0)
   rails (~> 5.0.1)
   sass-rails (~> 5.0)
