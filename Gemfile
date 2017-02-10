@@ -59,3 +59,4 @@ gem 'capistrano-rbenv', '~> 2.1'
 
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk'
