@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to @script.title, @script.pdf.url %>
-
+<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+<br>
 <%= link_to 'Edit', edit_script_path(@script) %> |
 <%= link_to 'Back', scripts_path %>

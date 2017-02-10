@@ -10,9 +10,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
-    url = @script.pdf.url.gsub(/\?.*/, "")
-    p url
-    # @reader = PDF::Reader.new(open(url))
+    @url = @script.pdf.url.gsub(/\?.*/, "")
   end
 
   # GET /scripts/new
