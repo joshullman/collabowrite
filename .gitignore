@@ -17,4 +17,8 @@
 .byebug_history
 config/database.yml
 config/secrets.yml
-/public/system
+
+#ignore avatars and scripts
+
+/public/system/users/*
+/public/system/scripts/*
