@@ -1,7 +1,8 @@
 class Script < ApplicationRecord
 
 	belongs_to :user
-	belongs_to :group
+	has_many   :group_scripts
+	has_many   :groups, through: :group_scripts
 
 	has_attached_file :pdf
   

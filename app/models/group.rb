@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
-	belongs_to :user_group
+	has_many   :user_groups
 	has_many   :users, through: :user_groups
+  has_many   :group_scripts
+  has_many   :scripts, through: :group_scripts
 
 	has_attached_file :image, styles: {
       thumb: '100x100>',
