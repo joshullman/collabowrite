@@ -10,8 +10,8 @@
   <tbody>
     <% @scripts.each do |script| %>
       <tr>
-        <td><%= link_to 'Show', script %></td>
-        <td><%= link_to @script.user.name, @script.user.name %></td>
+        <td><%= link_to script.title, script %></td>
+        <td><%= link_to script.user.name, script.user.name %></td>
       </tr>
     <% end %>
   </tbody>
