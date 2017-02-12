@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :scripts
+  has_many   :scripts
   belongs_to :user_groups
-  has_many :groups, through: :user_groups
+  has_many   :groups, through: :user_groups
 
   has_attached_file :avatar, styles: {
       thumb: '100x100>',

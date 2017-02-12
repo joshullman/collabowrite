@@ -18,14 +18,20 @@ ActiveRecord::Schema.define(version: 20170212021843) do
   create_table "groups", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "private"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "scripts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
+    t.boolean  "private"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "pdf_file_name"
@@ -37,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170212021843) do
   create_table "user_groups", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
+    t.boolean  "mod"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
