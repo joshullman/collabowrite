@@ -34,7 +34,7 @@ User.create(email: "ChampMan@aol.com", password: "password", name: "ChampMan")
 User.create(email: "FrogPrince@aol.com", password: "password", name: "FrogPrince")
 
 5.times do
-	Group.create(title: "THIS IS A TITLE", description: "THIS IS A DESCRIPTION")
+	Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph)
 end
 
 100.times do
@@ -44,9 +44,10 @@ end
 end
 
 100.times do
+	user = rand(34) + 1
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
-	Script.create(title: Faker::Company.name, description: Faker::Company.bs, private: is_private)
+	Script.create(user_id: user, title: Faker::Company.name, description: Faker::Company.bs, private: is_private)
 end
 
 100.times do

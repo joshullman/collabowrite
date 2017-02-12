@@ -16,7 +16,7 @@
   <tbody>
     <% @scripts.each do |script| %>
       <tr>
-        <td><%= link_to 'Show', script %></td>
+        <td><%= link_to script.title, script %></td>
         <td><%= link_to 'Edit', edit_script_path(script) %></td>
         <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -36,7 +36,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= link_to 'Show', group %></td>
+        <td><%= link_to group.title, group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
