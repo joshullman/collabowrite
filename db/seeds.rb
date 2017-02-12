@@ -40,5 +40,18 @@ end
 100.times do
 	user = rand(34) + 1
 	group = rand(5) + 1
-	UserGroup.create(user_id: user, group_id: group) if !UserGroup.where(user_id: user, group_id: group)
+	UserGroup.create(user_id: user, group_id: group) if !UserGroup.where(user_id: user, group_id: group).first
+end
+
+100.times do
+	flip = rand(2)
+	flip == 1 ? is_private = true : is_private = false
+	Script.create(title: Faker::Company.name, description: Faker::Company.bs, private: is_private)
+end
+
+100.times do
+	user = User.find(rand(34) + 1)
+	group = user.groups.sample
+	script = user.scripts.sample
+	GroupScript.create(group_id: group.id, script_id: script.id) if group && script && !GroupScript.where(group_id: group.id, script_id: script.id).first
 end
