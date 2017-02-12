@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to current_user.name, user_path(current_user) %>
+    <% end %>
+    <%= link_to "Groups", groups_path %>
   	<%= render 'devise/menu/registration_items' %>
     <%= render 'devise/menu/login_items' %>
     <%= yield %>

@@ -18,6 +18,7 @@ class Group < ApplicationRecord
   	u_groups.each do |u_group|
   		users << User.find(u_group.user_id)
   	end
+    users
   end
   
 end

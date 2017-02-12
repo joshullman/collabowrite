@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @group.title %></h1>
+<%= link_to image_tag(@group.image.url(:square)), @group.image.url %>
+<p><%= @group.description %></p>
+
+
 <table>
   <thead>
     <tr>
@@ -11,7 +16,8 @@
     <% @scripts.each do |script| %>
       <tr>
         <td><%= link_to script.title, script %></td>
-        <td><%= link_to script.user.name, script.user.name %></td>
+        <td><%= script.description %></td>
+        <td><%= link_to script.user.name, script.user %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @script.title %></h1>
+<p><%= @script.description %></p>
+
 <iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
 <br>
+
 <%= link_to 'Edit', edit_script_path(@script) %> |
 <%= link_to 'Back', scripts_path %>

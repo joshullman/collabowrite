@@ -1,7 +1,4 @@
-<%= @user.name %>
-<br/>
-<p>hey here i am changing things</p>
-<br/>
+<h1><%= @user.name %></h1>
 <%= link_to image_tag(@user.avatar.url(:square)), @user.avatar.url %>
 
 <h1>Scripts</h1>
@@ -9,7 +6,7 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -17,8 +14,11 @@
     <% @scripts.each do |script| %>
       <tr>
         <td><%= link_to script.title, script %></td>
+        <td><%= script.description %></td>
+        <% if script.user == current_user %>
         <td><%= link_to 'Edit', edit_script_path(script) %></td>
         <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,16 +29,21 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @groups.each do |group| %>
       <tr>
+        <td><%= link_to image_tag(group.image.url(:square)), group.image.url %>
+</td>
         <td><%= link_to group.title, group %></td>
+        <td><%= group.description %></td>
+        <% if group.mods.include?(current_user) %>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

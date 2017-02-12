@@ -33,14 +33,22 @@ User.create(email: "BrickThorn@aol.com", password: "password", name: "BrickThorn
 User.create(email: "ChampMan@aol.com", password: "password", name: "ChampMan")
 User.create(email: "FrogPrince@aol.com", password: "password", name: "FrogPrince")
 
-5.times do
+10.times do
 	Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph)
 end
 
 100.times do
 	user = rand(34) + 1
-	group = rand(5) + 1
-	UserGroup.create(user_id: user, group_id: group) if !UserGroup.where(user_id: user, group_id: group).first
+	group = rand(10) + 1
+	thingy = UserGroup.where(user_id: user, group_id: group).first
+	if thingy
+		flip = rand(2)
+		flip == 1 ? is_mod = true : is_mod = false
+		thingy.mod = is_mod
+		thingy.save
+	else 
+		UserGroup.create(user_id: user, group_id: group, mod: true)
+	end
 end
 
 100.times do
