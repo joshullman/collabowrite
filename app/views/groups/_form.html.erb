@@ -1,4 +1,4 @@
-<%= form_for(group) do |f| %>
+<%= form_for group, html: { multipart: true } do |f| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -19,6 +19,15 @@
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button_tag(:private, "Private?") %>
   </div>
 
   <div class="actions">

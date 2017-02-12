@@ -26,6 +26,10 @@
     <%= f.file_field :pdf %>
   </div>
 
+  <div class="field">
+    <%= f.radio_button_tag(:private, "Private?") %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
