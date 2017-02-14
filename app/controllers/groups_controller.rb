@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.user_id = current_user.id
+    GroupUser.create(user_id: current_user.id, group_id: @group.id, mod: true)
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
@@ -75,6 +76,6 @@ class GroupsController < ApplicationController
     end
 
     def group_member?(user, group)
-      UserGroup.where(user_id: user.id, group_id: group.id).first ? true : false
+      GroupUser.where(user_id: user.id, group_id: group.id).first ? true : false
     end
 end

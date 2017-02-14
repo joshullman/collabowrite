@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
-	has_many   :user_groups
-	has_many   :users, through: :user_groups
+	has_many   :group_users
+	has_many   :users, through: :group_users
   has_many   :group_scripts
   has_many   :scripts, through: :group_scripts
 

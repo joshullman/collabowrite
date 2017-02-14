@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20170212191056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "mod",        default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -29,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170212191056) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "private"
+    t.boolean  "is_private"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
@@ -38,21 +46,13 @@ ActiveRecord::Schema.define(version: 20170212191056) do
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
-    t.boolean  "private"
+    t.boolean  "is_private"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "pdf_file_name"
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
-  end
-
-  create_table "user_groups", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.boolean  "mod"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many   :scripts
-  has_many   :user_groups
-  has_many   :groups, through: :user_groups
+  has_many   :group_users
+  has_many   :groups, through: :group_users
 
   has_attached_file :avatar, styles: {
       thumb: '100x100>',
