@@ -35,7 +35,7 @@ class GroupUsersController < ApplicationController
       @group_user.accepted = true
     end
     respond_to do |format|
-      if @group_user.update(group_user_params)
+      if @group_user.save
         format.html { redirect_to @group, notice: 'Group user was successfully updated.' }
         format.json { render :show, status: :ok, location: @group_user }
       else

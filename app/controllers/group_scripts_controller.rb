@@ -1,31 +1,26 @@
 class GroupScriptsController < ApplicationController
 
   def edit
-  
+    @scripts = current_user.scripts
   end
 
   # POST /group_scripts
   # POST /group_scripts.json
   def create
-    @group_script = GroupScript.new(group_script_params)
-
-    respond_to do |format|
-      if @group_script.save
-        format.html { redirect_to @group_script, notice: 'Group script was successfully created.' }
-        format.json { render :show, status: :created, location: @group_script }
-      else
-        format.html { render :new }
-        format.json { render json: @group_script.errors, status: :unprocessable_entity }
-      end
+    @group = Group.find(params[:group])
+    params[:scripts].each do |script|
+      @group_script = GroupScript.create(script_id: script, group_id: params[:group])
     end
+    format.html { redirect_to @group, notice: 'Script(s) successfully added to Group' }
   end
 
   # DELETE /group_scripts/1
   # DELETE /group_scripts/1.json
   def destroy
-    @group_script.destroy
+    @group = Group.find(params[:group])
+    GroupScript.where(script_id: params[:script], group_id: params[:group]).first.destroy
     respond_to do |format|
-      format.html { redirect_to group_scripts_url, notice: 'Group script was successfully destroyed.' }
+      format.html { redirect_to @group, notice: 'Script successfully removed from Group.' }
       format.json { head :no_content }
     end
   end

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :scripts, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :groups
-  resources :group_scripts, only: [:create, :edit, :update, :destroy]
+  resources :group_scripts, only: [:create, :edit, :destroy]
   resources :group_users, only: [:create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
