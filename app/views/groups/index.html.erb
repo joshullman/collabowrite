@@ -18,7 +18,11 @@ Group Search
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
         <td>Private: <%= group.is_private %></td>
-        <td>Join</td>
+        <% group.users.include?(current_user) %>
+          <td>Leave (GroupUser destroy)</td>
+        <% else %>
+          <td>Join (GroupUser create)</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

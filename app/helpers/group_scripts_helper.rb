@@ -1,0 +1,2 @@
+module GroupScriptsHelper
+end
