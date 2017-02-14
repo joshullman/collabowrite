@@ -57,7 +57,7 @@ class ScriptsController < ApplicationController
   def destroy
     @script.destroy
     respond_to do |format|
-      format.html { redirect_to scripts_url, notice: 'Script was successfully destroyed.' }
+      format.html { redirect_to user_url(current_user), notice: 'Script was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
