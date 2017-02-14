@@ -6,8 +6,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
-    @groups = @user.groups
+    @groups = @user.accepted_groups
     @scripts = @user.scripts
+    p @groups
   end
 
   def profile

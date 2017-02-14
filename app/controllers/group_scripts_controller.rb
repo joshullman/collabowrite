@@ -2,6 +2,7 @@ class GroupScriptsController < ApplicationController
 
   def edit
     @scripts = current_user.scripts
+    @groups = current_user.accepted_groups
   end
 
   # POST /group_scripts

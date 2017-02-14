@@ -19,4 +19,13 @@ class User < ApplicationRecord
   def accepted_member?(group)
     GroupUser.where(user_id: self.id, group_id: group.id).first.accepted
   end
+
+  def accepted_groups
+    groups = []
+    group_users = GroupUser.where(user_id: self.id, accepted: true)
+    group_users.each do |group_user|
+      groups << group_user.group
+    end
+    groups
+  end
 end
