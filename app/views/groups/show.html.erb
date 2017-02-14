@@ -9,7 +9,7 @@
 <br>
 
 <% if @group_member %>
-  <%= link_to 'Leave Group', group_user_path(current_user), method: :delete, data: { confirm: 'Are you sure you want to leave the group?' }%>
+  <%= link_to 'Leave Group', group_user_path(current_user, @group), method: :delete, data: { confirm: 'Are you sure you want to leave the group?' }%>
 
   <h3>Members</h3>
   <table>
@@ -26,11 +26,11 @@
 </td>
           <td><%= link_to user.name, user %></td>
           <% if @mods.include?(current_user)%>
-            <td><%= link_to "Remove", group_user_path(user) %></td>
+            <td><%= link_to "Remove", group_user_path(user, @group) %></td>
             <% if @mods.include?(user) %>
-              <td><%= link_to "Demote", edit_group_user_path(user), data: {create_mod: false} %></td>
+              <td><%= link_to "Demote", edit_group_user_path(user, @group), data: {create_mod: false} %></td>
             <% else %>
-              <td><%= link_to "Promote", edit_group_user_path(user), data: {create_mod: true} %></td>
+              <td><%= link_to "Promote", edit_group_user_path(user, @group), data: {create_mod: true} %></td>
             <% end %>
           <% else %>
             <% if @mods.include?(user) %>
@@ -69,9 +69,9 @@
 <% else %>
   You don't have permission to view this group!
   <% if @group.is_private %>
-    <%= link_to 'Request to Join', group_users(current_user), method: :create %>
+    <%= link_to 'Request to Join', group_users_path(current_user, @group), method: :create %>
   <% else %>
-    <%= link_to 'Join Group', group_users(current_user), method: :create %>
+    <%= link_to 'Join Group', group_users_path(current_user, @group), method: :create %>
   <% end %>
   <%= link_to 'Back', groups_path %>
 <% end %>

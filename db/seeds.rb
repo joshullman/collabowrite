@@ -42,14 +42,12 @@ end
 100.times do
 	user = rand(34) + 1
 	group = rand(10) + 1
-	thingy = GroupUser.where(user_id: user, group_id: group).first
-	if thingy
+	if Group.find(group).mods.empty?
+		GroupUser.create(user_id: user, group_id: group, mod: true)
+	elsif !GroupUser.where(user_id: user, group_id: group).first
 		flip = rand(2)
 		flip == 1 ? is_mod = true : is_mod = false
-		thingy.mod = is_mod
-		thingy.save
-	else 
-		GroupUser.create(user_id: user, group_id: group, mod: true)
+		GroupUser.create(user_id: user, group_id: group, mod: is_mod)
 	end
 end
 
