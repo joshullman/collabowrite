@@ -20,5 +20,18 @@ class Group < ApplicationRecord
   	end
     users
   end
+
+  def members
+    members = []
+    group_users = self.group_users.where(accepted: true)
+    group_users.each do |group_user|
+      members << group_user.user
+    end
+    members
+  end
+
+  def pending?(user)
+    self.group_users.where(user_id: user.id, accepted: false).first ? true : false
+  end
   
 end

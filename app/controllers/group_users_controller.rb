@@ -4,16 +4,17 @@ class GroupUsersController < ApplicationController
   # POST /group_users.json
   def create
     @group = Group.find(params[:group])
-    if params[:create_mod] == true
+    if params[:create_mod] == "false"
       @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: true, is_mod: true)
     else
-      @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: params[:accepted])
+      params[:accepted] == "true" ? accepted = true : accepted = false
+      @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: accepted)
     end
     respond_to do |format|
-      if @group_user.save && params[:accepted] == true
+      if @group_user.save && params[:accepted] == "true"
         format.html { redirect_to @group, notice: 'Successfully joined group' }
         format.json { render :show, status: :created, location: @group_user }
-      elsif @group_user.save && params[:accepted] == false
+      elsif @group_user.save && params[:accepted] == "false"
         format.html { redirect_to @group, notice: 'Successfully requested to joined group' }
         format.json { render :show, status: :created, location: @group_user }
       else

@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @mods = @group.mods
-    @members = @group.users
+    @members = @group.members
     @scripts = @group.scripts
   end
 

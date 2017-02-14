@@ -18,10 +18,12 @@ Group Search
       <tr>
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
-        <% if group.users.include?(current_user) %>
+        <% if group.members.include?(current_user) %>
           <td><%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
         <% else %>
-          <% if group.is_private %>
+          <% if group.pending?(current_user) %>
+            <td>Request Pending...</td>
+          <% elsif group.is_private %>
             <td><%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %></td>
           <% else %>
             <td><%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %></td>
