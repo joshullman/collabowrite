@@ -1,10 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @script.title %></h1>
-<p><%= @script.description %></p>
+<% if !@script.is_private || @script.is_private && @script.user == current_user %>
 
-<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
-<br>
+	<h1><%= @script.title %></h1>
+	<p><%= @script.description %></p>
 
-<%= link_to 'Edit', edit_script_path(@script) %> |
-<%= link_to 'Back', scripts_path %>
+	<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+	<br>
+
+	<% if @script.user == current_user %>
+		<%= link_to 'Edit', edit_script_path(@script) %>
+	<% end %>
+
+<% else %>
+	You don't have permission to view this script!
+<% end %>

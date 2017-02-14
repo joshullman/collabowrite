@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @scripts = @group.scripts
+    @group_member = group_member?(current_user, @group)
   end
 
   # GET /groups/new
@@ -70,6 +71,10 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:title, :description, :private, :image)
+      params.require(:group).permit(:title, :description, :public, :image)
+    end
+
+    def group_member?(user, group)
+      UserGroup.where(user_id: user.id, group_id: group.id).first ? true : false
     end
 end
