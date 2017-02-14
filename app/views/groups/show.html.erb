@@ -6,7 +6,7 @@
 
 
 <% if @group_member %>
-  Leave Group
+  Leave Group(GroupUser path)
 
   <h3>Members</h3>
   <table>
@@ -46,9 +46,10 @@
     </tbody>
   </table>
 
-  Post Script
+  Post Script (GroupScript path)
   <% if @group.mods.include?(current_user) %>
     Add Mod
+    (GroupUser path)
     <%= link_to 'Edit', edit_group_path(@group) %> |
   <% end %>
   <%= link_to 'Back', groups_path %>
