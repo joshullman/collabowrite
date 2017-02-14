@@ -8,7 +8,7 @@
 <% end %>
 <br>
 
-<% if @group_member %>
+<% if @members.include?(current_user) %>
   <%= link_to 'Leave Group', group_user_path(current_user, @group), method: :delete, data: { confirm: 'Are you sure you want to leave the group?' }%>
 
   <h3>Members</h3>
@@ -24,7 +24,7 @@
         <tr>
           <td><%= link_to image_tag(user.avatar.url(:square)), user.avatar.url %>
 </td>
-          <td><%= link_to user.name, user %></td>
+          <td><%= link_to user.username, user %></td>
           <% if @mods.include?(current_user)%>
             <td><%= link_to "Remove", group_user_path(user, @group) %></td>
             <% if @mods.include?(user) %>
@@ -54,7 +54,7 @@
       <% @scripts.each do |script| %>
         <tr>
           <td><%= link_to script.title, script %></td>
-          <td><%= link_to script.user.name, script.user %></td>
+          <td><%= link_to script.user.username, script.user %></td>
           <td><%= script.description %></td>
           <% if script.user == current_user %>
           <td><%= link_to 'Remove', group_script_path(script), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %></td>

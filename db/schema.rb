@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170212191056) do
     t.integer  "user_id"
     t.integer  "group_id"
     t.boolean  "mod",        default: false
+    t.boolean  "confirmed",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170212191056) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "name"
+    t.string   "username"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
