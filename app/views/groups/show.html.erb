@@ -39,10 +39,10 @@
       <% @scripts.each do |script| %>
         <tr>
           <td><%= link_to script.title, script %></td>
-          <td><%= script.description %></td>
           <td><%= link_to script.user.name, script.user %></td>
+          <td><%= script.description %></td>
           <% if script.user == current_user %>
-          <td>'Remove' (GroupScript destroy)</td>
+          <td><%= link_to 'Remove', script.user %>'Remove' (GroupScript destroy)</td>
           <% end %>
         </tr>
       <% end %>
