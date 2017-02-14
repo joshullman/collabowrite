@@ -4,6 +4,7 @@ class CreateGroupUsers < ActiveRecord::Migration[5.0]
       t.integer  :user_id
       t.integer  :group_id
       t.boolean  :mod, default: false
+      t.boolean  :confirmed, default: false
 
       t.timestamps
     end

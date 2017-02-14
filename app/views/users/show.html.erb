@@ -17,8 +17,8 @@
           <td><%= link_to script.title, script %></td>
           <td><%= script.description %></td>
           <% if script.user == current_user %>
-          <td><%= link_to 'Edit', edit_script_path(script) %></td>
-          <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_script_path(script) %></td>
+            <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
         <% end %>
       </tr>
@@ -43,8 +43,8 @@
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
         <% if group.mods.include?(current_user) %>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_group_path(group) %></td>
+          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure you want to delete this group?' } %></td>
         <% end %>
       </tr>
     <% end %>

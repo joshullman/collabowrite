@@ -18,10 +18,14 @@ Group Search
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
         <td>Private: <%= group.is_private %></td>
-        <% group.users.include?(current_user) %>
-          <td>Leave (GroupUser destroy)</td>
+        <% if group.users.include?(current_user) %>
+          <td><%= link_to "Leave", group_user_path(current_user, @group), method: :destroy, data: {confirm: "Are you sure you want to leave the group?"} %></td>
         <% else %>
-          <td>Join (GroupUser create)</td>
+          <% if group.is_private %>
+            <td><%= link_to "Request to Join", group_users_path(current_user, @group) %></td>
+          <% else %>
+            <td><%= link_to "Join", group_users_path(current_user, @group) %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

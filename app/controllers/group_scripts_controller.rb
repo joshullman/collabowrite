@@ -1,5 +1,9 @@
 class GroupScriptsController < ApplicationController
 
+  def new
+  
+  end
+
   # POST /group_scripts
   # POST /group_scripts.json
   def create
