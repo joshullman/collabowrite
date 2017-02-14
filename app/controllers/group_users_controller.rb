@@ -4,8 +4,11 @@ class GroupUsersController < ApplicationController
   # POST /group_users.json
   def create
     @group = Group.find(params[:group])
-    @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: params[:accepted])
-
+    if params[:create_mod] == true
+      @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: true, is_mod: true)
+    else
+      @group_user = GroupUser.new(user_id: params[:user], group_id: params[:group], accepted: params[:accepted])
+    end
     respond_to do |format|
       if @group_user.save && params[:accepted] == true
         format.html { redirect_to @group, notice: 'Successfully joined group' }
@@ -25,13 +28,13 @@ class GroupUsersController < ApplicationController
   def update
     @group = Group.find(params[:group])
     @group_user = GroupUser.where(user_id: params[:user], group_id: params[:group]).first
-    if params[:create_mod]
-      if params[:create_mod] == true
-        @group_user.mod = true
-      else
-        @group_user.mod = false
-      end
-    elsif params[:accepted]
+    p params
+    if params[:create_mod] == "true"
+      @group_user.mod = true
+      @group_user.accepted = true
+    elsif params[:create_mod] == "false"
+      @group_user.mod = false
+    elsif params[:accepted] == "true"
       @group_user.accepted = true
     end
     respond_to do |format|
@@ -48,10 +51,11 @@ class GroupUsersController < ApplicationController
   # DELETE /group_users/1
   # DELETE /group_users/1.json
   def destroy
+    @group = Group.find(params[:group])
     group = GroupUser.where(user_id: params[:user], group_id: params[:group]).first
     group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Successfully left group.' }
+      format.html { redirect_to @group, notice: 'Successfully left group.' }
     end
   end
 

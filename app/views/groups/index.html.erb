@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 Group Search
+<br>
 <%= link_to 'Create a New Group', new_group_path %>
 
 <h1>Groups</h1>
@@ -17,14 +18,13 @@ Group Search
       <tr>
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
-        <td>Private: <%= group.is_private %></td>
         <% if group.users.include?(current_user) %>
-          <td><%= link_to "Leave", group_user_path(current_user, @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
+          <td><%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
         <% else %>
-          <% if @group.is_private %>
-            <%= link_to 'Request to Join', group_users_path(user: current_user, group: @group, accepted: false), method: :create %>
+          <% if group.is_private %>
+            <td><%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %></td>
           <% else %>
-            <%= link_to 'Join Group', group_users_path(user: current_user, group: @group, accepted: true), method: :create %>
+            <td><%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %></td>
           <% end %>
         <% end %>
       </tr>

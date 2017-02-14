@@ -4,14 +4,15 @@
 
 	<h1><%= @script.title %></h1>
 	<p><%= @script.description %></p>
-
-	<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
-	<br>
-
 	<% if @script.user == current_user %>
 		<%= link_to 'Edit', edit_script_path(@script) %>
 	<% end %>
-	Add to Group
+	<br>
+	<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
+	<br>
+
+	<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+	<br>
 
 <% else %>
 	You don't have permission to view this script!

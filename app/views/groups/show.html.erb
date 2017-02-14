@@ -26,16 +26,19 @@
 </td>
           <td><%= link_to user.username, user %></td>
           <% if @mods.include?(current_user)%>
+
             <% if user.accepted_member?(@group) %>
               <td><%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %></td>
             <% else %>
               <td><%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %></td>
             <% end %>
-            <% if @mods.include?(user) %>
+
+            <% if @mods.include?(user) && user.accepted_member?(@group) %>
               <td><%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %></td>
             <% else %>
               <td><%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %></td>
             <% end %>
+            
           <% else %>
             <% if @mods.include?(user) %>
               <td>Mod</td>
