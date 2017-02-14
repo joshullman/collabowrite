@@ -9,7 +9,7 @@
 <br>
 
 <% if @members.include?(current_user) %>
-  <%= link_to 'Leave Group', group_user_path(current_user, @group), method: :delete, data: { confirm: 'Are you sure you want to leave the group?' }%>
+  <td><%= link_to "Leave", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
 
   <h3>Members</h3>
   <table>
@@ -26,11 +26,15 @@
 </td>
           <td><%= link_to user.username, user %></td>
           <% if @mods.include?(current_user)%>
-            <td><%= link_to "Remove", group_user_path(user, @group) %></td>
-            <% if @mods.include?(user) %>
-              <td><%= link_to "Demote", edit_group_user_path(user, @group), data: {create_mod: false} %></td>
+            <% if user.accepted_member?(@group) %>
+              <td><%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %></td>
             <% else %>
-              <td><%= link_to "Promote", edit_group_user_path(user, @group), data: {create_mod: true} %></td>
+              <td><%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %></td>
+            <% end %>
+            <% if @mods.include?(user) %>
+              <td><%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %></td>
+            <% else %>
+              <td><%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %></td>
             <% end %>
           <% else %>
             <% if @mods.include?(user) %>
@@ -57,21 +61,21 @@
           <td><%= link_to script.user.username, script.user %></td>
           <td><%= script.description %></td>
           <% if script.user == current_user %>
-          <td><%= link_to 'Remove', group_script_path(script), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %></td>
+          <td><%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %></td>
           <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-   link_to 'Post Script', group_scripts
+  <%= link_to 'Post Script', group_script_path(group: @group) %></td>
 
 <% else %>
   You don't have permission to view this group!
   <% if @group.is_private %>
-    <%= link_to 'Request to Join', group_users_path(current_user, @group), method: :create %>
+    <%= link_to 'Request to Join', group_users_path(user: current_user, group: @group, accepted: false), method: :create %>
   <% else %>
-    <%= link_to 'Join Group', group_users_path(current_user, @group), method: :create %>
+    <%= link_to 'Join Group', group_users_path(user: current_user, group: @group, accepted: true), method: :create %>
   <% end %>
   <%= link_to 'Back', groups_path %>
 <% end %>

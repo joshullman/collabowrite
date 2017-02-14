@@ -36,15 +36,15 @@ User.create(email: "FrogPrince@aol.com", password: "password", username: "FrogPr
 15.times do
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
-	Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private)
+	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private)
+	user = rand(34) + 1
+	GroupUser.create(user_id: user, group_id: group.id, mod: true)
 end
 
 100.times do
 	user = rand(34) + 1
 	group = rand(10) + 1
-	if Group.find(group).mods.empty?
-		GroupUser.create(user_id: user, group_id: group, mod: true)
-	elsif !GroupUser.where(user_id: user, group_id: group).first
+	if !GroupUser.where(user_id: user, group_id: group).first
 		flip = rand(2)
 		flip == 1 ? is_mod = true : is_mod = false
 		GroupUser.create(user_id: user, group_id: group, mod: is_mod)

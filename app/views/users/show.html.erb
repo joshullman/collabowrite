@@ -43,7 +43,7 @@
         <td><%= link_to group.title, group %></td>
         <td><%= group.description %></td>
         <% if group.users.include?(current_user) %>
-          <td><%= link_to "Leave", group_user_path(current_user, @group), method: :destroy, data: {confirm: "Are you sure you want to leave the group?"} %></td>
+          <td><%= link_to "Leave", group_user_path(user: current_user, group: group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
         <% end %>
         <% if group.mods.include?(current_user) %>
           <td><%= link_to 'Edit', edit_group_path(group) %></td>

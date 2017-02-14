@@ -1,6 +1,6 @@
 class GroupScriptsController < ApplicationController
 
-  def new
+  def edit
   
   end
 
