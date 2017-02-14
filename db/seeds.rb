@@ -46,8 +46,8 @@ end
 	group = rand(10) + 1
 	if !GroupUser.where(user_id: user, group_id: group).first
 		flip = rand(2)
-		flip == 1 ? is_mod = true : is_mod = false
-		GroupUser.create(user_id: user, group_id: group, mod: is_mod)
+		flip == 1 ? flip = true : flip = false
+		GroupUser.create(user_id: user, group_id: group, mod: flip, accepted: flip)
 	end
 end
 
