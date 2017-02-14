@@ -13,7 +13,7 @@ class Group < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def mods
-  	u_groups = UserGroup.where(group_id: self.id, mod: true)
+  	u_groups = GroupUser.where(group_id: self.id, mod: true)
   	users = []
   	u_groups.each do |u_group|
   		users << User.find(u_group.user_id)

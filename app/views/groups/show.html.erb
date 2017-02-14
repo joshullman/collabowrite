@@ -6,7 +6,28 @@
 
 
 <% if @group_member %>
+  Leave Group
 
+  <h3>Members</h3>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @members.each do |user| %>
+        <tr>
+          <td><%= link_to image_tag(user.avatar.url(:square)), user.avatar.url %>
+</td>
+          <td><%= link_to user.name, user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h3>Scripts</h3>
   <table>
     <thead>
       <tr>

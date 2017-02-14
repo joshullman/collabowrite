@@ -13,11 +13,13 @@
   <tbody>
     <% @scripts.each do |script| %>
       <tr>
-        <td><%= link_to script.title, script %></td>
-        <td><%= script.description %></td>
-        <% if script.user == current_user %>
-        <td><%= link_to 'Edit', edit_script_path(script) %></td>
-        <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if !script.is_private %>
+          <td><%= link_to script.title, script %></td>
+          <td><%= script.description %></td>
+          <% if script.user == current_user %>
+          <td><%= link_to 'Edit', edit_script_path(script) %></td>
+          <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

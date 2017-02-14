@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @members = @group.users
     @scripts = @group.scripts
     @group_member = group_member?(current_user, @group)
   end
