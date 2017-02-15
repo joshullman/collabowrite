@@ -64,3 +64,8 @@ end
 	script = user.scripts.sample
 	GroupScript.create(group_id: group.id, script_id: script.id) if group && script && !GroupScript.where(group_id: group.id, script_id: script.id).first
 end
+
+500.times do
+	script = Script.all.sample
+	script.notes.create(user_id: script.user_id, content: Faker::Lorem.paragraph, page_num: 0)
+end
