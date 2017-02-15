@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many   :scripts
   has_many   :group_users
   has_many   :groups, through: :group_users
+  has_many   :notes
 
   has_attached_file :avatar, styles: {
       thumb: '100x100>',
@@ -27,5 +28,9 @@ class User < ApplicationRecord
       groups << group_user.group
     end
     groups
+  end
+
+  def sent_notes
+    Note.where(user_id: self.id)
   end
 end
