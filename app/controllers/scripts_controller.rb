@@ -11,6 +11,8 @@ class ScriptsController < ApplicationController
   # GET /scripts/1.json
   def show
     @url = @script.pdf.url.gsub(/\?.*/, "")
+    @notes = @script.notes
+    @note = Note.new()
   end
 
   # GET /scripts/new

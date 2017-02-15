@@ -10,16 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :script_id %>
-    <%= f.number_field :script_id %>
-  </div>
+ 
+  <%= f.hidden_field :user, :value => user.id %>
+  <%= f.hidden_field :script, :value => script.id %>
 
   <div class="field">
     <%= f.label :page_num %>
