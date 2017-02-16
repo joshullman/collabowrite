@@ -1,41 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <% if !@script.is_private || @script.is_private && @script.user == current_user %>
-		<h1><%= @script.title %></h1>
-		<h3><%= @script.user.username %></h3>
-		<p><%= @script.description %></p>
-		<% if @script.user == current_user %>
-			<%= link_to 'Edit', edit_script_path(@script) %>
-		<% end %>
-		<br>
-		<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
-		<br>
+	<h1><%= @script.title %></h1>
+	<h3><%= @script.user.username %></h3>
+	<p><%= @script.description %></p>
+	<% if @script.user == current_user %>
+		<%= link_to 'Edit', edit_script_path(@script) %>
+	<% end %>
+	<br>
+	<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
+	<br>
 
-		<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
-		<br>
-		<h3>Notes</h3>
-		<% if @user != current_user %>
-			<h3>Add Note</h3>
-			<%= render '/notes/form', {note: @note, user: current_user, script: @script }%>
-		<% end %>
-	  <table>
-	    <thead>
-	      <tr>
-	        <th colspan="2"></th>
-	      </tr>
-	    </thead>
+	<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+	<br>
+	<h3>Notes</h3>
+	<% if @user != current_user %>
+		<h3>Add Note</h3>
+		<%= render '/notes/form', {note: @note, user: current_user, script: @script }%>
+	<% end %>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-	    <tbody>
-	      <% @notes.each do |note| %>
-	        <tr>
-	        <% if @user == current_user || note.user == current_user %>
-	        	<td><%= note.page_num %></td>
-	        	<td><%= note.content %></td>
-	        <% end %>
-	        </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
+    <tbody>
+      <% @notes.each do |note| %>
+        <tr>
+        <% if @user == current_user || note.user == current_user %>
+        	<td><%= note.user.username %></td>
+        	<td><%= note.page_num %></td>
+        	<td><%= note.content %></td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
 	You don't have permission to view this script!
 <% end %>
