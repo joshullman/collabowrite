@@ -1,0 +1,24 @@
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12">
+                <h1>Collabowrite
+                </h1>
+                <% if current_user %>
+                <nav>
+                    <ul class="sf-menu">
+                        <li><%= link_to current_user.username, user_path(current_user) %>
+                        <ul>
+                        	<li><%= render 'devise/menu/registration_items' %></li>
+                        	<li><%= render 'devise/menu/login_items' %></li>
+                        </ul>
+                        </li>
+                        <li><%= link_to "Groups", groups_path %>
+                        </li>
+                    </ul>
+                </nav>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,928 @@
+@import "font-awesome.min.css";
+@import "grid.css";
+@import "menu.css";
+@import "contact-form.css";
+
+@import url(//fonts.googleapis.com/css?family=Fjalla+One);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:700);
+
+#toTop {
+    background: url(../images/to_top.png) no-repeat;
+    position: fixed;
+    bottom: 40px;
+    left: 51%;
+    margin-left: 640px;
+    display: block;
+    height: 42px;
+    width: 42px;
+    text-align: center;
+    border-radius: 50px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+#toTop:hover {
+    opacity: 0.7;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+}
+
+#toTop:active, #toTop:focus {
+    outline:none;
+}
+img {
+    max-width: 100%;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease-in;
+}
+
+a[href^="tel:"] {
+  color: inherit;
+  text-decoration: none;
+}
+* {
+  -webkit-text-size-adjust: none;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #999699;
+}
+
+p {
+    overflow: hidden;
+}
+
+strong {
+    font-weight: bold;
+}
+/*==================================HEADER===============================================*/
+#header {
+    border-top: 8px solid #93d6c5;
+    padding: 31px 0 36px 0;
+    border-bottom: 1px solid #93d6c5;
+}
+
+h1 {
+    float: left;
+}
+
+
+/*==================================CONTENT===============================================*/
+
+/* Headers and under-headers styles
+========================================================*/
+.header {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 65px;
+    text-transform: uppercase;
+    line-height: 71px;
+    color: #3d3d3d;
+    text-align: center;
+}
+
+/* White header*/
+.header__inset1 {
+    color: #ffffff;
+}
+/* Little header*/
+.header__inset2 {
+    color: #5f5f5f;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: left;
+}
+
+/* Green little header*/
+.header__inset3 {
+    color: #93d6c5;
+    font-size: 25px;
+    line-height: 27px;
+    text-align: left;
+}
+
+/* Dark header*/
+.header__inset4 {
+    color: #3d3d3d;
+}
+
+/* Little header*/
+.header__inset5 {
+    font-size: 24px;
+    line-height: 24px;
+}
+/* littlest header */
+.header__inset6 {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.header-span {
+    text-align: center;
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    font-weight: lighter;
+    font-size: 20px;
+    line-height: 25px;
+    color: #513737;
+    text-transform: none;
+}
+
+/* White under-header */
+.header-span__inset1 {
+    color:  #ffffff;
+}
+/* Grey under-header */
+.header-span__inset2 {
+    color: #838383;
+}
+/* Lighty-grey little under-header */
+.header-span__inset3 {
+    color: #928e92;
+    font-size: 13px;
+}
+
+/* Buttons
+========================================================*/
+.btn-default {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+    color: #5f5f5f;
+    padding: 8px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-default:hover {
+    color: #93d6c5;
+}
+
+/* Big button */
+.btn__large {
+    font-size: 20px;
+    color: #ffffff;
+    background: #93d6c5;
+    padding: 17px 36px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.btn__large:hover {
+    color: #5f5f5f;
+}
+
+
+/* Margin and padding offsets/insets
+========================================================*/
+.margin-top__offset1 {
+    margin-top: 27px;
+}
+
+.margin-top__offset2 {
+    margin-top: 18px;
+}
+
+.margin-top__offset3 {
+    margin-top: 5px;
+}
+
+.margin-top__offset4 {
+    margin-top: 60px;
+}
+
+.margin-bottom__offset1 {
+    margin-bottom: 45px;
+}
+
+.margin-bottom__offset2 {
+    margin-bottom: 39px;
+}
+
+.margin-bottom__offset3 {
+    margin-bottom: 13px;
+}
+
+.margin-bottom__offset4 {
+    margin-bottom: 54px;
+}
+
+.margin-bottom__offset5 {
+    margin-bottom: 11px;
+}
+
+.margin-bottom__offset6 {
+    margin-bottom: 22px;
+}
+
+.margin-bottom__offset9 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom__offset10 {
+    margin-bottom: 26px;
+}
+
+/* Banner about this company
+========================================================*/
+.info-banner {
+    background: url(../images/page1_img1.png) center;
+    background-size: cover;
+    padding: 114px 0 111px  0;
+}
+.info-banner_inner {
+    text-align: center;
+}
+/* Welcome section with genres picture
+========================================================*/
+.section-with-3-pictures {
+    padding: 69px 0;
+    text-align: center;
+}
+
+/* Genres */
+.three-pictures {
+    margin-top: 54px;
+    text-align: left;
+}
+
+.three-pictures img {
+    float: left;
+    margin-right: 10px;
+}
+
+.three-pictures p {
+    overflow: hidden;
+}
+
+/* New Releases
+========================================================*/
+.posts-on-background {
+    background: url(../images/page1_img5.png) center;
+    background-size: cover;
+    padding: 74px 0 71px 0;
+}
+
+h2 > a:hover {
+    color: #5f5f5f;
+}
+
+/* Every post */
+.post-on-background {
+    background: #ffffff;
+    margin-bottom: 35px;
+    padding: 15px;
+}
+
+.post-on-background img {
+    float: left;
+    margin-right: 42px;
+}
+
+.post-on-background p {
+    overflow: hidden;
+}
+
+.post-on-background h2 {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.post-on-background_inner {
+    padding: 23px 15px 0 30px;
+}
+
+/* Our team
+========================================================*/
+
+.people-with-contacts {
+    padding: 72px 0 79px 0;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.people-with-contacts img {
+    margin-bottom: 34px;
+}
+
+.people-with-contacts p {
+    margin-bottom: 22px;
+}
+
+/* Social Button */
+.socials {
+    display: table-cell;
+}
+
+.social-button {
+    color: #93d6c5;
+    font-size: 39px;
+    vertical-align: middle;
+    margin-right: 9px;
+    margin-left: 3px;
+}
+
+.social-button:hover {
+    color: #999699;
+}
+
+.social-button .fa-twitter {
+    font-size: 33px;
+}
+
+.social-button .fa-facebook {
+    line-height: 33px;
+}
+
+/* Contacts
+========================================================*/
+.contacts-block {
+    padding: 72px 0 0 0;
+}
+
+.google-map__contact {
+    margin-top: 69px;
+    width: 100%;
+    height: 414px;
+}
+
+
+/* Coming Soon
+========================================================*/
+.posts-with-date {
+    padding: 86px 0 46px 0;
+}
+
+/* Date Label*/
+.date-label {
+    background: #93d6c5;
+    display: inline-block;
+    position: relative;
+    padding: 28px 52px;
+}
+
+.triangle {
+    position: absolute;
+    top: 0;
+    right: -38px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 0 40px 38px;
+    border-color: transparent transparent transparent #93d6c5;
+}
+
+/* Description Post */
+.description-post {
+    margin-bottom: 37px;
+}
+
+.description-post a {
+    margin-right: 5px;
+}
+.description-post a:hover {
+    color: #3d3d3d;
+}
+
+.description-post .btn-default:hover {
+    color: #93d6c5;
+}
+
+.description-post img {
+    float: left;
+    margin-right: 22px;
+}
+
+.description-post p {
+    overflow: hidden;
+}
+
+.description-post span {
+    color: #3d3d3d;
+}
+
+
+/* Top Sellers
+========================================================*/
+.description-posts {
+    padding: 86px 0 54px 0;
+}
+
+.description-post__inset1 {
+    padding: 13px 13px 23px 13px;
+    border: 1px solid #e5eaea;
+    margin-bottom: 30px;
+}
+
+.description-post__inset1 img {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 22px;
+}
+
+.description-post__inset1 h2 > a:hover {
+    color: #93d6c5;
+}
+
+/* List style type 1 Genres, Top Authors */
+.list1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #93d6c5;
+}
+
+.list1 a:hover {
+    color: #3d3d3d;
+}
+
+.list1 li {
+    margin-bottom: 13px;
+}
+
+/* Authors
+========================================================*/
+.big-post {
+    padding: 86px 0 69px 0;
+}
+
+.description-post__inset2 {
+    padding-bottom: 16px;
+}
+
+.description-post__inset2 img {
+    margin-bottom: 20px;
+}
+
+.description-post__inset3 {
+    margin-bottom: 34px;
+}
+
+/* Browse all booker's authors
+========================================================*/
+.banner-with-list {
+    background: url(../images/page4_img8.png) center;
+    background-size: cover;
+    padding: 74px 0 65px 0;
+}
+.list2 {
+    margin-top: 52px;
+    font-family: "Fjalla One", sans-serif;
+    font-size: 17px;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.list2 li+li {
+    margin-top: 14px;
+}
+
+.list2 a:hover {
+    color: #93d6c5;
+}
+
+/* Interviews
+========================================================*/
+.post-with-video {
+    padding: 81px 0 33px 0;
+}
+
+.vimeo-video1 {
+    float: left;
+    width: 642px;
+    height: 395px;
+    margin-right: 23px;
+}
+
+.description-post__inset3 a:first-child:hover {
+    color: #93d6c5;
+}
+
+/* Who we are
+========================================================*/
+.description-post__inset4 img {
+    margin-right: 25px;
+}
+/* Leadership team
+========================================================*/
+.posts-on-background__inset1 {
+    background: url(../images/page5_img2.png) center;
+}
+
+/* Why choose us?
+========================================================*/
+.block-with-three-posts {
+    padding: 94px 0 24px 0;
+}
+
+/* How to find us
+========================================================*/
+.google-map__contact2 {
+    height: 346px;
+    margin-top: 44px;
+    margin-bottom: 27px;
+}
+
+/* Address
+========================================================*/
+.mb0 dt {
+    display: inline-block;
+    margin: 0 84px 30px 60px;
+    line-height: 24px;
+    position: relative;
+}
+
+.mb0 dt:nth-child(2) {
+    margin-left: 11px;
+}
+.mb0 dt span {
+    display: inline-block;
+    min-width: 76px;
+}
+
+.simple-link:hover {
+    color: #93d6c5;
+}
+/* Address Icons */
+.mb0 dt:before {
+    position: absolute;
+    font-family: FontAwesome;
+    line-height: 50px;
+    font-size: 50px;
+    color: #93d6c5;
+    left: -60px;
+}
+
+.mb0 .first-icon:before {
+    content: "\f015";
+}
+
+.mb0 .second-icon:before {
+    content: "\f095";
+}
+
+.mb0 .third-icon:before {
+    content: "\f0e0";
+    font-size: 44px;
+    line-height: 44px;
+}
+
+/* Privacy
+========================================================*/
+.simple-link__inset1 {
+    display: inline-block;
+    color: #93d6c5;
+    font-weight: bold;
+}
+
+.simple-link__inset1:hover {
+    color: #3d3d3d;
+}
+
+.color__inset1 {
+    color: #3d3d3d;
+}
+.padding__inset1 {
+    padding-bottom: 79px;
+}
+
+/*==================================FOOTER
+===============================================*/
+#footer {
+    padding: 38px 0 31px 0;
+    border-top: 1px solid #e9e9e9;
+}
+
+.privacy p {
+    color: #928e92;
+}
+
+.privacy a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 12px;
+    position: relative;
+}
+
+.privacy a:before {
+    font-family: FontAwesome;
+    content: "\f111";
+    font-size: 4px;
+    position: absolute;
+    left: -8px;
+    top: 0;
+    display: block;
+}
+
+.privacy a:hover {
+    color: #93d6c5;
+}
+
+/*==================================RESPONSIVE LAYOUTS===============================================*/
+@media only screen and (max-width: 1199px) {
+    .post-on-background_inner {
+        padding: 0;
+    }
+    .post-on-background img {
+        float: left;
+        margin-right: 10px;
+    }
+    /* Welcome section with genres picture
+    ========================================================*/
+    .three-pictures {
+        margin-top: 54px;
+        text-align: center;
+    }
+    .three-pictures .header {
+        text-align: center;
+    }
+    .three-pictures img {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .three-pictures p {
+        overflow: hidden;
+    }
+    /* Our team
+    ========================================================*/
+    .socials {
+        text-align: center;
+        display: block;
+    }
+
+    .people-with-contacts p {
+        text-align: center;
+    }
+    .people-with-contacts .header {
+        text-align: center;
+    }
+    .socials {
+        display: block;
+    }
+
+    /* Coming Soon
+    ========================================================*/
+    /* Date Label*/
+    .date-label {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .date-label span {
+        font-size: 16px;
+    }
+
+    /* Description Post */
+
+}
+
+@media only screen and (max-width: 979px) {
+    /* Description post
+========================================================*/
+    h1,
+    nav {
+        float: none;
+        text-align: center;
+    }
+    nav ul {
+    display: inline-block;
+
+    }
+    .sf-menu {
+        background: #ffffff;
+    }
+    /* Description post
+========================================================*/
+    .description-post .btn-default {
+        display: block;
+        overflow: hidden;
+        text-align: right;
+    }
+    /* Posts-on-background
+========================================================*/
+    .posts-on-background {
+        text-align: center;
+    }
+
+    .posts-on-background img {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .posts-on-background h2 {
+        text-align: center;
+    }
+
+    .posts-on-background p {
+        text-align: left;
+    }
+
+    /* List style type 1 Genres, Top Authors */
+
+    .aside-header {
+        text-align: left;
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    .description-post__inset4 {
+        text-align: center;
+    }
+
+    .description-post__inset4 p,
+    .description-post__inset4 h2 {
+        text-align: left;
+    }
+    .description-post__inset4 img {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .vimeo-video1 {
+        width: 748px;
+        max-height: 430px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* Header
+========================================================*/
+    h1 {
+        float: none;
+        text-align: center;
+    }
+    .sf-menu {
+        display: none;
+        background: #93d6c5;
+        outline: none;
+    }
+
+    nav {
+        width: 100%;
+    }
+    /* Banner about this company
+    ========================================================*/
+    .info-banner {
+        padding: 40px 0 40px  0;
+    }
+    .info-banner .header {
+        font-size: 40px;
+    }
+    /* Welcome section with genres picture
+    ========================================================*/
+    .three-pictures img {
+        margin-top: 20px;
+    }
+
+    .three-pictures .grid_4 {
+        padding-bottom: 20px;
+        border-bottom: 1px dashed #93d6c5;
+    }
+
+    .three-pictures .grid_4:nth-child(3) {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    /* New Releases
+========================================================*/
+    .post-on-background_inner {
+        padding: 0;
+    }
+    .post-on-background img {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+
+    /* Our team
+========================================================*/
+    .people-with-contacts * {
+        text-align: center;
+    }
+    .people-with-contacts img {
+        margin-top: 30px;
+    }
+    .people-with-contacts .grid_2 {
+        padding-bottom: 30px;
+        border-bottom: 1px dashed #93d6c5;
+    }
+    .people-with-contacts .grid_2:nth-child(6) {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    /* Posts with Date
+========================================================*/
+    .posts-with-date, .description-posts {
+        padding: 50px 0 0 0;
+    }
+    /* Description Post */
+    .description-post {
+        margin-bottom: 70px;
+    }
+
+    .description-post .btn-default {
+        text-align: center;
+    }
+
+    .description-post img {
+        display: block;
+        float: none;
+        margin: 0 auto 20px;
+    }
+    .description-post * {
+        text-align: center;
+    }
+
+
+    /* Date Label*/
+    .date-label {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        background: #93d6c5;
+        display: inline-block;
+        margin: 0 auto;
+        position: relative;
+        padding: 10px 10px;
+        margin-bottom: 60px;
+    }
+
+    .triangle {
+        position: absolute;
+        top: 65px;
+        left: 50%;
+        margin-left: -26px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 26px 26px 0 26px;
+        border-color: #93d6c5 transparent transparent transparent;
+    }
+    /* Top Sellers
+========================================================*/
+
+    /* List style type 1 Genres, Top Authors */
+    .list1 {
+        text-align: center;
+    }
+    /* Browse all booker's authors
+    ========================================================*/
+    .list2 {
+        text-align: center;
+    }
+
+    .description-post__inset4 p,
+    .description-post__inset4 h2    {
+        text-align: center;
+    }
+
+    .vimeo-video1 {
+        width: 420px;
+        max-height: 253px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .mb0 dt:nth-child(2) {
+        margin-left: 60px;
+    }
+    /* Footer
+========================================================*/
+    #footer {
+        text-align: center;
+    }
+    .header__inset1, .header__inset7, .aside-header.header {
+        font-size: 40px;
+        line-height: 45px;
+        text-align: center;
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .vimeo-video1 {
+        width: 270px;
+        max-height: 163px;
+    }
+}
+@media only screen and (max-width: 320px) {
+
+}
+/*Core variables and mixins*/

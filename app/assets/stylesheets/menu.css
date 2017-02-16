@@ -1,0 +1,212 @@
+nav {
+    float: right;
+    margin-top: 19px;
+}
+.sf-menu  a {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+}
+.sf-menu > li {
+    text-transform: uppercase;
+    float: left;
+    text-align: center;
+    line-height: 16px;
+    margin-left: 27px;
+    -webkit-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.sf-menu li a {
+    cursor: pointer;
+    color: #999699;
+}
+
+.sf-menu > li > a {
+    display: block;
+    padding: 6px 2px;
+
+}
+
+.sf-menu > li > .active {
+    border-bottom: 2px solid #93d6c5;
+    color: #3d3d3d;
+}
+
+.sf-menu, .sf-menu li ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #93d6c5;
+}
+
+.sf-menu > li > ul > li a {
+    color: inherit;
+    display: inline;
+    padding-left: 13px;
+}
+
+.sf-menu > li > ul > li {
+    line-height: 12px;
+}
+
+.sf-menu > li > ul > li+li {
+    margin-top: 22px;
+}
+
+.sf-menu > li > ul {
+    padding: 31px 0;
+}
+
+.sf-menu > li ul {
+    display:none;
+    position:absolute;
+    text-align: left;
+    z-index:100;
+
+    width:106px;
+}
+
+.sf-menu > li > ul > li  a {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.sf-menu > li > ul{
+    margin-top: 11px;
+
+}
+.sf-menu > li > a {
+    border-bottom:2px solid #ffffff;
+}
+.sf-menu > li > a:hover {
+    border-bottom: 2px solid #93d6c5;
+    color: #3d3d3d;
+}
+
+.sf-menu > li > a:active {
+    background: none;
+}
+
+
+.sf-menu > li > ul > a,
+.sf-menu > li:hover > a,
+.sf-menu > li > ul > li > a,
+.sf-menu > li > ul > li > ul > li > a:hover {
+    color: #3d3d3d;
+}
+
+.sf-menu > li > ul > li > ul > li > a {
+    color: #191919;
+}
+
+.sf-menu > li > ul > li > ul > li+li  {
+    padding-top: 20px;
+}
+
+.sf-menu > li > ul > li > ul > li:first-child  {
+    padding-top: 12px;
+}
+
+.sf-menu > li > ul > li > a:hover,
+.sf-menu > li > ul > li > ul > li > a:hover {
+    color: #ffffff;
+}
+
+.sf-menu > li > ul {
+
+}
+.sf-menu > .sfHover {
+    color: #ffffff;
+}
+
+.sf-menu > li > ul > .sfHover > a {
+    color: #ffffff;
+}
+
+.sf-menu > .sfHover > a {
+    border-bottom: 2px solid #93d6c5;
+    color: #3d3d3d;
+}
+
+.sf-menu > li > ul > li > ul  {
+    overflow: hidden;
+}
+
+.sf-menu > li:hover > ul,
+.sf-menu > li > ul > li:hover > ul{
+    display:block;
+}
+
+.sf-with-ul {
+    position: relative;
+}
+
+.sf-menu > li > .sf-with-ul:after {
+    font-family: FontAwesome;
+    content: "\f0d7";
+    font-size: 13px;
+    position: absolute;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    left: 50%;
+    margin-left: -4px;
+    bottom: -5px;
+    color: #a8a8a8;
+}
+
+.sf-menu > .sfHover > a:after {
+    color: #93d6c5;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.sf-menu > li > ul > li >.sf-with-ul:after {
+    font-family: FontAwesome;
+    content: "\f0da";
+    font-size: 13px;
+    position: absolute;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    right: -30px;
+    bottom: 1px;
+    cursor: default;
+}
+
+.sf-menu > li > ul > li >.sf-with-ul:after:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.sf-menu > li > ul > li > ul {
+    padding-bottom: 12px;
+    margin-left: 106px;
+    margin-top: -20px;
+    width: 97px;
+}
+
+
+.sf-menu > li > .active:after {
+    color: #93d6c5;
+}
+
+.select-menu {
+    width: 100%;
+    margin-top: 20px;
+    background: #f1f1f1;
+    font: 16px/20px "Fjalla One", sans-serif;
+    text-align: left;
+    border: 1px solid #000;
+    padding: 2px 0;
+    position: relative;
+}
+.select-menu option {
+    text-align: left;
+    position: relative;
+}

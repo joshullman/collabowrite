@@ -1,0 +1,9 @@
+#toTop {
+    behavior: url(js/PIE.htc);
+    position:fixed;
+}
+
+.btn__large {
+    behavior: url(js/PIE.htc);
+    position: relative;
+}
