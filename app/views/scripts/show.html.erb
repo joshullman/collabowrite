@@ -1,19 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<% if !@script.is_private || @script.is_private && @script.user == current_user %>
+<div class="script_container">
+	<% if !@script.is_private || @script.is_private && @script.user == current_user %>
 
-	<h1><%= @script.title %></h1>
-	<p><%= @script.description %></p>
-	<% if @script.user == current_user %>
-		<%= link_to 'Edit', edit_script_path(@script) %>
+		<h1><%= @script.title %></h1>
+		<p><%= @script.description %></p>
+		<% if @script.user == current_user %>
+			<%= link_to 'Edit', edit_script_path(@script) %>
+		<% end %>
+		<br>
+		<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
+		<br>
+
+		<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+		<br>
+	<% else %>
+		You don't have permission to view this script!
 	<% end %>
-	<br>
-	<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
-	<br>
-
-	<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
-	<br>
-
-<% else %>
-	You don't have permission to view this script!
-<% end %>
+</div>
+<div class="comments_container">
+	<% if !@comments.empty? %>
+		<%= @comments.each do |comment| %>
+			<h3>comment.user</h3>
+			<p>comment.content</p>
+		<% end %>
+	<% else %>
+		No notes yet!
+	<% end %>
+</div>

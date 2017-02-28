@@ -1,4 +1,4 @@
-class Note < ApplicationRecord
+class Comment < ApplicationRecord
 	belongs_to :user
 	belongs_to :commentable
 end
