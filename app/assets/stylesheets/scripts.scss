@@ -10,3 +10,16 @@
 .scripts_container h1 {
 	text-align: center;
 }
+
+.script_row {
+	width: 100%;
+	height: 160px;
+}
+
+.script {
+	text-align: center;
+	width: 150px;
+	height: 100%;
+	float: left;
+	padding: 10px;
+}
