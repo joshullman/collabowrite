@@ -6,15 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Special+Elite" rel="stylesheet">
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to current_user.username, user_path(current_user) %>
-    <% end %>
-    <%= link_to "Groups", groups_path %>
-  	<%= render 'devise/menu/registration_items' %>
-    <%= render 'devise/menu/login_items' %>
+    <%= render "layouts/nav_bar", user: current_user %>
     <%= yield %>
   </body>
 </html>

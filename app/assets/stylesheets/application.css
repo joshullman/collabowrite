@@ -23,3 +23,25 @@
 	height: 300px;
 	width: 300px;
 }
+
+.site_name {
+	text-align: center;
+	font-family: 'Rock Salt', cursive;
+	font-size: 35px;
+	padding:10px;
+}
+
+.nav_bar_container {
+	text-align: center;
+}
+
+.nav_bar_container a {
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 18px;
+}
+
+body {
+	font-family: 'Special Elite', cursive;
+}

@@ -7,11 +7,10 @@
 		<p><%= @script.description %></p>
 		<% if @script.user == current_user %>
 			<%= link_to 'Edit', edit_script_path(@script) %>
+			<br>
+		<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
 		<% end %>
 		<br>
-		<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
-		<br>
-
 		<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
 		<br>
 	<% else %>
