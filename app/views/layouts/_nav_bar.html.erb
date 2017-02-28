@@ -1,9 +1,9 @@
 <div class="nav_bar_container">
 	<h1 class="site_name">Collabowrite</h1>
 	<% if user %>
-	  <%= link_to "Profile", user_path(user) %>
+		<%= link_to "Profile", user_path(user) %>
+		<%= link_to "Groups", groups_path %>
+		<%= render 'devise/menu/registration_items' %>
+		<%= render 'devise/menu/login_items' %>
 	<% end %>
-	<%= link_to "Groups", groups_path %>
-	<%= render 'devise/menu/registration_items' %>
-	<%= render 'devise/menu/login_items' %>
 </div>
