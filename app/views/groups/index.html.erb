@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-Group Search
-<br>
-<%= link_to 'Create a New Group', new_group_path %>
+<div class="group_options">
+  Group Search
+  <br>
+  <%= link_to 'Create a New Group', new_group_path %>
+  <br>
+</div>
 
 <div class="groups_index_container">
-  <h1>Groups</h1>
+  <h1>All Groups</h1>
     <% @groups.each_slice(4) do |group_row| %>
       <div class="group_row">
       <% group_row.each do |group| %>
@@ -17,14 +20,14 @@ Group Search
           <%= group.description %>
           <br>
           <% if group.members.include?(current_user) %>
-            <%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
+            (<%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>)
           <% else %>
             <% if group.pending?(current_user) %>
-              Request Pending...
+              (Request Pending...)
             <% elsif group.is_private %>
-              <%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>
+              (<%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>)
             <% else %>
-              <%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>
+              (<%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>)
             <% end %>
           <% end %>
         </div>
