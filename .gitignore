@@ -22,3 +22,4 @@ config/secrets.yml
 
 /public/system/users/*
 /public/system/scripts/*
+/public/system/groups/*
