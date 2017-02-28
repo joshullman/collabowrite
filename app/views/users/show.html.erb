@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
-<%= link_to image_tag(@user.avatar.url(:square)), @user, class: "icon_medium" %>
+<%= link_to image_tag(@user.avatar.url(:thumb)), @user, class: "icon_medium" %>
 
 <h1>Scripts</h1>
 
@@ -32,7 +32,7 @@
     <% @groups.each_slice(3) do |group_row| %>
       <div class="group">
         <% group_row.each do |group| %>
-          <%= link_to image_tag(group.image.url(:square)), group, class: "icon_thumb" %>
+          <%= link_to image_tag(group.image.url(:thumb)), group, class: "icon_thumb" %>
           <%= link_to group.title, group %>
           <%= group.description %>
           <% if group.users.include?(current_user) %>

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @group.title %></h1>
-<%= link_to image_tag(@group.image.url(:square)), @group.image.url, class: "icon_medium" %>
+<%= link_to image_tag(@group.image.url(:medium)), @group.image.url, class: "icon_medium" %>
 <p><%= @group.description %></p>
 <% if @mods.include?(current_user) %>
   <%= link_to 'Edit Group', edit_group_path(@group) %>
@@ -10,12 +10,12 @@
 
 <% if @members.include?(current_user) %>
   <%= link_to "Leave", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
-  
+
   <div class="members_container">
     <h3>Members</h3>
     <div class="member_row">
       <% @members.each do |user| %>
-          <%= link_to image_tag(user.avatar.url(:square)), user.avatar.url, class: "icon_thumb" %>
+          <%= link_to image_tag(user.avatar.url(:thumb)), user.avatar.url, class: "icon_thumb" %>
           <%= link_to user.username, user %>
           <% if @mods.include?(current_user)%>
             <% if user.accepted_member?(@group) %>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <%= link_to 'Post Script', group_script_path(group: @group) %></td>
+  <%= link_to 'Post Script', group_script_path(group: @group) %>
 
 <% else %>
   You don't have permission to view this group!

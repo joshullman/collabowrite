@@ -4,34 +4,29 @@ Group Search
 <br>
 <%= link_to 'Create a New Group', new_group_path %>
 
-<h1>Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= link_to group.title, group %></td>
-        <td><%= group.description %></td>
-        <% if group.members.include?(current_user) %>
-          <td><%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
-        <% else %>
-          <% if group.pending?(current_user) %>
-            <td>Request Pending...</td>
-          <% elsif group.is_private %>
-            <td><%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %></td>
+<div class="groups_container">
+  <h1>Groups</h1>
+  <div class="group_row">
+    <% @groups.each_slice(3) do |group_row| %>
+      <% group_row.each do |group| %>
+        <div class="group">
+          <%= link_to image_tag(group.image.url(:thumb)), group, class: "icon_thumb" %>
+          <%= link_to group.title, group %>
+          <%= group.description %>
+          <% if group.members.include?(current_user) %>
+            <%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
           <% else %>
-            <td><%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %></td>
-          <% end %>
+            <% if group.pending?(current_user) %>
+              Request Pending...
+            <% elsif group.is_private %>
+              <%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>
+            <% else %>
+              <%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>
+            <% end %>
+          </div>
         <% end %>
-      </tr>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+</div>
 
 <br>
