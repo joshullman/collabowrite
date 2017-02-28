@@ -17,11 +17,13 @@
 .icon_thumb img {
 	height: 100px;
 	width: 100px;
+	border-radius: 50%;
 }
 
 .icon_medium img {
 	height: 300px;
 	width: 300px;
+	border-radius: 50%;
 }
 
 .site_name {
@@ -33,10 +35,10 @@
 
 .nav_bar_container {
 	text-align: center;
+	/*background-color: #F1F1D4;*/
 }
 
 .nav_bar_container a {
-	text-align: center;
 	padding-left: 10px;
 	padding-right: 10px;
 	font-size: 18px;
@@ -44,4 +46,15 @@
 
 body {
 	font-family: 'Special Elite', cursive;
+	/*background-image: url("coffee_background.jpg");
+	color: white; */
+}
+
+.footer_container {
+	text-align: center;
+}
+
+.github_icon img {
+	height: 50px;
+	width: 50px;
 }
