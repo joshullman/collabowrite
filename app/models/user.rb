@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many   :scripts
   has_many   :group_users
   has_many   :groups, through: :group_users
-  has_many   :notes
+  has_many   :comments
 
   has_attached_file :avatar, styles: {
       thumb: '100x100>',
       square: '200x200#',
       medium: '300x300>'
-    }
+    }, :default_url => "default_user_icon.svg"
   
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

@@ -1,4 +1,4 @@
 class Note < ApplicationRecord
-	belongs_to :script
 	belongs_to :user
+	belongs_to :commentable
 end
