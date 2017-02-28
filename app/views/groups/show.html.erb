@@ -15,6 +15,31 @@
 <br>
 
 <% if @members.include?(current_user) %>
+
+  <div class="scripts_container">
+    <h1>Scripts</h1>
+    <span class="title" style="text-align: center;"><%= link_to 'Post Script', group_script_path(group: @group) %></span>
+    <% @scripts.each_slice(3) do |script_row| %>
+      <div class="script_row">
+        <% script_row.each do |script| %>
+          <div class="script">
+            <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
+            <br>
+            <span class="title"><%= link_to script.title, script %></span>
+            <br>
+            By: <%= link_to script.user.username, script.user %>
+            <br>
+            <%= script.description %>
+            <% if script.user == current_user %>
+            <br>
+            <%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="members_container">
     <h1>Members</h1>
     <% @members.each_slice(3) do |user_row| %>
@@ -52,33 +77,11 @@
     <% end %>
   </div>
 
-  <div class="scripts_container">
-    <h1>Scripts</h1>
-    <span class="title" style="text-align: center;"><%= link_to 'Post Script', group_script_path(group: @group) %></span>
-    <% @scripts.each_slice(3) do |script_row| %>
-      <div class="script_row">
-        <% script_row.each do |script| %>
-          <div class="script">
-            <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
-            <br>
-            <span class="title"><%= link_to script.title, script %></span>
-            <br>
-            By: <%= link_to script.user.username, script.user %>
-            <br>
-            <%= script.description %>
-            <% if script.user == current_user %>
-            <br>
-            <%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
 <% else %>
   You don't have permission to view this group!
-  <% if @group.is_private %>
+  <% if @group.pending?(current_user) %>
+    (Request Pending...)
+  <% elsif @group.is_private %>
     <%= link_to 'Request to Join', group_users_path(user: current_user, group: @group, accepted: false), method: :create %>
   <% else %>
     <%= link_to 'Join Group', group_users_path(user: current_user, group: @group, accepted: true), method: :create %>
