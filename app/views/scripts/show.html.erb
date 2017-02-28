@@ -21,8 +21,11 @@
 <div class="comments_container">
 	<% if !@comments.empty? %>
 		<%= @comments.each do |comment| %>
-			<h3>comment.user</h3>
-			<p>comment.content</p>
+			<div class="comment">
+				<%= link_to image_tag(comment.user.avatar.url(:square)), comment.user, class: "icon_thumb" %>
+				<h4><%= link_to comment.user, user %></h4>
+				<p>comment.content</p>
+			</div>
 		<% end %>
 	<% else %>
 		No notes yet!
