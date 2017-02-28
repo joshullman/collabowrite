@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @group.title %></h1>
-<%= link_to image_tag(@group.image.url(:square)), @group.image.url %>
+<%= link_to image_tag(@group.image.url(:square)), @group.image.url, class: "icon_medium" %>
 <p><%= @group.description %></p>
 <% if @mods.include?(current_user) %>
   <%= link_to 'Edit Group', edit_group_path(@group) %>
@@ -9,67 +9,52 @@
 <br>
 
 <% if @members.include?(current_user) %>
-  <td><%= link_to "Leave", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></td>
-
-  <h3>Members</h3>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="4"></th>
-      </tr>
-    </thead>
-
-    <tbody>
+  <%= link_to "Leave", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
+  
+  <div class="members_container">
+    <h3>Members</h3>
+    <div class="member_row">
       <% @members.each do |user| %>
-        <tr>
-          <td><%= link_to image_tag(user.avatar.url(:square)), user.avatar.url %>
-</td>
-          <td><%= link_to user.username, user %></td>
+          <%= link_to image_tag(user.avatar.url(:square)), user.avatar.url, class: "icon_thumb" %>
+          <%= link_to user.username, user %>
           <% if @mods.include?(current_user)%>
-
             <% if user.accepted_member?(@group) %>
-              <td><%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %></td>
+              <%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %>
             <% else %>
-              <td><%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %></td>
+              <%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %>
             <% end %>
-
             <% if @mods.include?(user) && user.accepted_member?(@group) %>
-              <td><%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %></td>
+              <%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %>
             <% else %>
-              <td><%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %></td>
+              <%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %>
             <% end %>
-            
           <% else %>
             <% if @mods.include?(user) %>
-              <td>Mod</td>
+              Mod
             <%end%>
           <% end %>
-        </tr>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 
-  <h3>Scripts</h3>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="4"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @scripts.each do |script| %>
-        <tr>
-          <td><%= link_to script.title, script %></td>
-          <td><%= link_to script.user.username, script.user %></td>
-          <td><%= script.description %></td>
-          <% if script.user == current_user %>
-          <td><%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %></td>
-          <% end %>
-        </tr>
+  <div class="scripts_container">
+    <h3>Scripts</h3>
+    <div class="script_row">
+      <% @scripts.each_slice(3) do |script_row| %>
+        <% script_row.each do |script| %>
+          <div class="script">
+            <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
+            <%= link_to script.title, script %>
+            <%= link_to script.user.username, script.user %>
+            <%= script.description %>
+            <% if script.user == current_user %>
+            <%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 
   <%= link_to 'Post Script', group_script_path(group: @group) %></td>
 
