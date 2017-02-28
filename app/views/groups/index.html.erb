@@ -4,15 +4,18 @@ Group Search
 <br>
 <%= link_to 'Create a New Group', new_group_path %>
 
-<div class="groups_container">
+<div class="groups_index_container">
   <h1>Groups</h1>
-  <div class="group_row">
-    <% @groups.each_slice(3) do |group_row| %>
+    <% @groups.each_slice(4) do |group_row| %>
+      <div class="group_row">
       <% group_row.each do |group| %>
         <div class="group">
           <%= link_to image_tag(group.image.url(:thumb)), group, class: "icon_thumb" %>
-          <%= link_to group.title, group %>
+          <br>
+          <span class="title"><%= link_to group.title, group %></span>
+          <br>
           <%= group.description %>
+          <br>
           <% if group.members.include?(current_user) %>
             <%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
           <% else %>
@@ -23,9 +26,10 @@ Group Search
             <% else %>
               <%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>
             <% end %>
-          </div>
+          <% end %>
+        </div>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
 </div>
 

@@ -14,7 +14,7 @@
               <% if !script.is_private %>
                 <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
                 <br>
-                <%= link_to script.title, script %>
+                <span class="title"><%= link_to script.title, script %></span>
                 <br>
                 <% if script.user == current_user %>
                   <%= link_to 'Edit', edit_script_path(script) %>
