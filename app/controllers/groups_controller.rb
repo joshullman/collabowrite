@@ -11,9 +11,9 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @mods = @group.mods
-    @members = @group.members
-    @scripts = @group.scripts
-    @comments = @group.comments
+    @members = @group.members.sort_by {|user| user.username }
+    @scripts = @group.scripts.order(:created_at => :desc)
+    @comments = @group.comments.order(:created_at => :desc)
   end
 
   # GET /groups/new

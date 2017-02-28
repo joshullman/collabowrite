@@ -28,7 +28,7 @@
             <br>
             By: <%= link_to script.user.username, script.user %>
             <br>
-            <%= script.description %>
+            <%= script.logline %>
             <% if script.user == current_user %>
             <br>
             <%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %>

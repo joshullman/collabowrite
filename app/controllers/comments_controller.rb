@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   
   def create
-    @note = Comment.new(comment_params)
+    @comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @comment.save

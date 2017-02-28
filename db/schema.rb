@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170215004511) do
 
   create_table "scripts", force: :cascade do |t|
     t.string   "title"
+    t.text     "logline"
     t.text     "description"
     t.integer  "user_id"
     t.boolean  "is_private"

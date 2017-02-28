@@ -57,20 +57,21 @@ end
 	user = rand(34) + 1
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
-	Script.create(user_id: user, title: Faker::Company.name, description: Faker::Company.bs, is_private: is_private)
+	Script.create(user_id: user, title: Faker::Company.name, logline: Faker::Company.bs, description: Faker::Lorem.paragraph, is_private: is_private)
 end
 
 100.times do
-	user = User.find(rand(34) + 1)
+	user = User.all.sample
 	group = user.groups.sample
 	script = user.scripts.sample
 	GroupScript.create(group_id: group.id, script_id: script.id) if group && script && !GroupScript.where(group_id: group.id, script_id: script.id).first
 end
 
 500.times do
-	user = User.find(rand(34) + 1)
+	user = User.all.sample
+	user_two = User.all.sample
 	script = user.scripts.sample
-	script.comments.create(content: Faker::Lorem.paragraph, user_id: user.id) if script && script.user_id != user.id
+	script.comments.create(content: Faker::Lorem.paragraph, user_id: user_two.id) if script && user != user_two
 end
 
 100.times do
