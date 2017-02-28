@@ -1,62 +1,80 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @group.title %></h1>
-<%= link_to image_tag(@group.image.url(:medium)), @group.image.url, class: "icon_medium" %>
-<p><%= @group.description %></p>
-<% if @mods.include?(current_user) %>
-  <%= link_to 'Edit Group', edit_group_path(@group) %>
-<% end %>
+<div class="group_show">
+  <h1><%= @group.title %></h1>
+  <%= link_to image_tag(@group.image.url(:medium)), @group.image.url, class: "icon_medium" %>
+  <p><%= @group.description %></p>
+  <% if @mods.include?(current_user) %>
+    <%= link_to 'Edit Group', edit_group_path(@group) %>
+    <br>
+  <% end %>
+  <% if @members.include?(current_user) %>
+    <%= link_to "Leave Group", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
+  <% end %>
+</div>
 <br>
 
 <% if @members.include?(current_user) %>
-  <%= link_to "Leave", group_user_path(user: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
-
   <div class="members_container">
-    <h3>Members</h3>
-    <div class="member_row">
-      <% @members.each do |user| %>
+    <h1>Members</h1>
+    <% @members.each_slice(3) do |user_row| %>
+      <div class="member_row">
+        <% user_row.each do |user| %>
+          <div class="member">
           <%= link_to image_tag(user.avatar.url(:thumb)), user.avatar.url, class: "icon_thumb" %>
-          <%= link_to user.username, user %>
+          <br>
+          <span class="title"><%= link_to user.username, user %></span>
+          <br>
           <% if @mods.include?(current_user)%>
+            
             <% if user.accepted_member?(@group) %>
               <%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %>
             <% else %>
               <%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %>
             <% end %>
+            
             <% if @mods.include?(user) && user.accepted_member?(@group) %>
               <%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %>
             <% else %>
               <%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %>
+            
             <% end %>
           <% else %>
+            
             <% if @mods.include?(user) %>
               (Mod)
             <%end%>
+
           <% end %>
-      <% end %>
-    </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="scripts_container">
-    <h3>Scripts</h3>
-    <div class="script_row">
-      <% @scripts.each_slice(3) do |script_row| %>
+    <h1>Scripts</h1>
+    <span class="title" style="text-align: center;"><%= link_to 'Post Script', group_script_path(group: @group) %></span>
+    <% @scripts.each_slice(3) do |script_row| %>
+      <div class="script_row">
         <% script_row.each do |script| %>
           <div class="script">
             <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
-            <%= link_to script.title, script %>
-            <%= link_to script.user.username, script.user %>
+            <br>
+            <span class="title"><%= link_to script.title, script %></span>
+            <br>
+            By: <%= link_to script.user.username, script.user %>
+            <br>
             <%= script.description %>
             <% if script.user == current_user %>
+            <br>
             <%= link_to 'Remove', group_script_path(script: script, group: @group), method: :delete, data: { confirm: 'Are you sure you want to remove this script from the group?  (Your script and notes will still be available to you)' } %>
             <% end %>
           </div>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-
-  <%= link_to 'Post Script', group_script_path(group: @group) %>
 
 <% else %>
   You don't have permission to view this group!

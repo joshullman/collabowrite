@@ -6,3 +6,25 @@
 	padding-top: 20px;
 	text-align: center;
 }
+
+.members_container {
+	width: 50%;
+	float: left;
+}
+
+.members_container h1 {
+	text-align: center;
+}
+
+.member_row {
+	width: 100%;
+	height: 160px;
+}
+
+.member {
+	text-align: center;
+	width: 150px;
+	height: 100%;
+	float: left;
+	padding: 10px;
+}
