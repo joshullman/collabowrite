@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     @mods = @group.mods
     @members = @group.members
     @scripts = @group.scripts
+    @comments = @group.comments
   end
 
   # GET /groups/new

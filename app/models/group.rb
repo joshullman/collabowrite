@@ -5,11 +5,7 @@ class Group < ApplicationRecord
   has_many   :scripts, through: :group_scripts
   has_many   :comments, as: :commentable
 
-	has_attached_file :image, styles: {
-      thumb: '100x100>',
-      square: '200x200#',
-      medium: '300x300>'
-    }, :default_url => "default_group_icon.jpg"
+	has_attached_file :image, :default_url => "default_group_icon.jpg"
   
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 

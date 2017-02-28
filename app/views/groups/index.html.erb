@@ -17,8 +17,6 @@
           <br>
           <span class="title"><%= link_to group.title, group %></span>
           <br>
-          <%= group.description %>
-          <br>
           <% if group.members.include?(current_user) %>
             (<%= link_to "Leave", group_user_path(current_user, group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>)
           <% else %>

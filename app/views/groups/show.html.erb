@@ -39,6 +39,26 @@
     <% end %>
   </div>
 
+  <div class="comments_container">
+    <% @comments.each_slice(4) do |comment_row| %>
+      <div class="comment_row">
+        <% comment_row.each do |comment| %>
+          <div class="comment">
+            <p><%= comment.content %></p>
+            <br>
+            <%= link_to comment.user.username, comment.user %>
+            <br>
+            <%= comment.created_at %>
+            <% if comment.user == current_user %>
+              <br>
+              <%= link_to 'Delete', comment_path(comment), method: :delete %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="members_container">
     <% @members.each_slice(4) do |user_row| %>
       <div class="member_row">

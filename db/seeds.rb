@@ -38,16 +38,18 @@ User.create(email: "FrogPrince@aol.com", password: "password", username: "FrogPr
 	flip == 1 ? is_private = true : is_private = false
 	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private)
 	user = rand(34) + 1
-	GroupUser.create(user_id: user, group_id: group.id, mod: true)
+	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true)
 end
 
 100.times do
 	user = rand(34) + 1
 	group = rand(10) + 1
 	if !GroupUser.where(user_id: user, group_id: group).first
-		flip = rand(2)
-		flip == 1 ? flip = true : flip = false
-		GroupUser.create(user_id: user, group_id: group, mod: flip, accepted: flip)
+		mod = rand(2)
+		mod == 1 ? mod = true : mod = false
+		accepted = rand(2)
+		accepted == 1 ? accepted = true : accepted = false
+		GroupUser.create(user_id: user, group_id: group, mod: mod, accepted: accepted)
 	end
 end
 
@@ -63,4 +65,16 @@ end
 	group = user.groups.sample
 	script = user.scripts.sample
 	GroupScript.create(group_id: group.id, script_id: script.id) if group && script && !GroupScript.where(group_id: group.id, script_id: script.id).first
+end
+
+500.times do
+	user = User.find(rand(34) + 1)
+	script = user.scripts.sample
+	script.comments.create(content: Faker::Lorem.paragraph, user_id: user.id) if script && script.user_id != user.id
+end
+
+100.times do
+	group = Group.all.sample
+	user = group.members.sample
+	group.comments.create(content: Faker::Lorem.paragraph, user_id: user.id) if user
 end
