@@ -9,7 +9,7 @@
 
 .group_row {
 	width: 100%;
-	min-height: 200px;
+	overflow: overlay;
 }
 
 .group {
@@ -21,19 +21,6 @@
 
 .groups_index_container {
 	text-align: center;
-}
-
-.groups_index_container .group_row {
-	width: 100%;
-	height: 350px;
-}
-
-.groups_index_container .group_row .group {
-	text-align: center;
-	width: 22%;
-	height: 100%;
-	float: left;
-	padding: 1%;
 }
 
 .group_show {
