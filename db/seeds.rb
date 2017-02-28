@@ -47,8 +47,12 @@ end
 	if !GroupUser.where(user_id: user, group_id: group).first
 		mod = rand(2)
 		mod == 1 ? mod = true : mod = false
-		accepted = rand(2)
-		accepted == 1 ? accepted = true : accepted = false
+		if mod
+			accepted = true
+		else
+			accepted = rand(2)
+			accepted == 1 ? accepted = true : accepted = false
+		end
 		GroupUser.create(user_id: user, group_id: group, mod: mod, accepted: accepted)
 	end
 end
