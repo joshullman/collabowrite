@@ -10,16 +10,14 @@
       <div class="script_row">
         <% script_row.each do |script| %>
           <div class="script">
-            <% if !script.is_private || script.user == current_user %>
-              <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
-              <br>
-              <span class="title"><%= link_to script.title, script %></span>
-              <br>
-              <p><%= script.logline %></p>
-              <% if script.user == current_user %>
-                <span class="button"><%= link_to 'Edit', edit_script_path(script) %></span>
-                <span class="button"><%= link_to 'Delete', script, method: :delete, data: { confirm: 'Are you sure you want to delete this script?  (You will lose all notes posted to this script)' } %></span>
-              <% end %>
+            <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
+            <br>
+            <span class="title"><%= link_to script.title, script %></span>
+            <br>
+            <p><%= script.logline %></p>
+            <% if script.user == current_user %>
+              <span class="button"><%= link_to 'Edit', edit_script_path(script) %></span>
+              <span class="button"><%= link_to 'Delete', script, method: :delete, data: { confirm: 'Are you sure you want to delete this script?  (You will lose all notes posted to this script)' } %></span>
             <% end %>
           </div>
         <% end %>

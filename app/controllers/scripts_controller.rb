@@ -10,7 +10,11 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
-    @script.user == current_user ? @comments = @script.comments : @comments = @script.comments.where(user_id: current_user.id)
+    if @script.user == current_user
+      @comments = @script.comments
+    else
+      @comments = @script.comments.where(user_id: current_user.id)
+    end
   end
 
   # GET /scripts/new

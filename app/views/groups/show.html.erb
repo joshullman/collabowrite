@@ -17,7 +17,7 @@
 <% if @members.include?(current_user) %>
   <%= render "layouts/group_bar" %>
   <div class="scripts_container">
-    <span class="title" style="text-align: center;"><%= link_to 'Post Script', group_script_path(group: @group) %></span>
+    <span class="title" style="text-align: center;"><%= link_to 'Post Script(s) to Group', group_script_path(group: @group) %></span>
     <% @scripts.each_slice(4) do |script_row| %>
       <div class="script_row">
         <% script_row.each do |script| %>
@@ -96,7 +96,7 @@
   </div>
 
 <% else %>
-  You don't have permission to view this group!
+  <p>You don't have permission to view this group!</p>
   <% if @group.pending?(current_user) %>
     (Request Pending...)
   <% elsif @group.is_private %>
@@ -104,5 +104,6 @@
   <% else %>
     <%= link_to 'Join Group', group_users_path(user: current_user, group: @group, accepted: true), method: :create %>
   <% end %>
+  <br>
   <%= link_to 'Back', groups_path %>
 <% end %>

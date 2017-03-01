@@ -9,7 +9,7 @@
 		<% if @script.user == current_user %>
 			<%= link_to 'Edit', edit_script_path(@script) %>
 			<br>
-		<%= link_to 'Add to Group', edit_group_script_path(user: current_user) %>
+		<%= link_to 'Post Script to Group(s)', edit_group_script_path(user: current_user) %>
 		<% end %>
 		<br>
 		<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
@@ -19,7 +19,7 @@
 	<% end %>
 </div>
 
-<div class="comments_container">
+<div class="script_comments_container">
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
 			<div class="comment">

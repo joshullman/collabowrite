@@ -6,9 +6,12 @@ class UsersController < ApplicationController
 	end
 
 	def show
-    @groups = @user.accepted_groups
-    @scripts = @user.scripts
-    p @groups
+    if @user == current_user
+      @scripts = @user.scripts.order(:created_at => :desc)
+    else
+      @scripts = @user.scripts.where(is_private: false).order(:created_at => :desc)
+    end
+    @groups = @user.accepted_groups.sort_by {|group| group.title }
   end
 
   def profile
