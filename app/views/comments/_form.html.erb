@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <% if script %>
+    <%= hidden_field_tag :script_id, script.id %>
+  <% else %>
+    <%= hidden_field_tag :group_id, group.id %>
+  <% end %>
 
   <div class="field">
     <%= f.label :content %>

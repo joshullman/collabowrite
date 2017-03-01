@@ -23,6 +23,9 @@
 <div class="script_comments_container">
 	<span class="title">Notes</span>
 	<br>
+	<% if @script.user != current_user %>
+		<%= render "comments/form", comment: Comment.new, script: @script %>
+	<% end %>
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
 			<div class="comment">
