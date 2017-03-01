@@ -3,16 +3,17 @@
 <div class="script_container">
 	<% if !@script.is_private || @script.is_private && @script.user == current_user %>
 
-		<h1><%= @script.title %></h1>
-		<p><%= @script.logline %></p>
-		<p><%= @script.description %></p>
+		<h1 style="text-decoration: underline"><%= @script.title %></h1>
+		<p>Written by: <%= link_to @script.user.username, @script.user %></p>
+		<p>Logline: <%= @script.logline %></p>
+		<p>Description: <%= @script.description %></p>
 		<% if @script.user == current_user %>
-			<%= link_to 'Edit', edit_script_path(@script) %>
+			<%= link_to 'Edit Script', edit_script_path(@script) %>
 			<br>
 		<%= link_to 'Post Script to Group(s)', edit_group_script_path(user: current_user) %>
 		<% end %>
 		<br>
-		<iframe src=<%="#{@script.pdf.url}"%> height="800px" width="625px"></iframe>
+		<iframe src=<%="#{@script.pdf.url}#toolbar=0"%> class="script_frame"></iframe>
 		<br>
 	<% else %>
 		You don't have permission to view this script!
@@ -20,9 +21,11 @@
 </div>
 
 <div class="script_comments_container">
+	<span class="title">Notes</span>
+	<br>
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
-			<div class="comment">
+			<div class="script_comment">
 				<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user, class: "icon_thumb" %>
 				<h4><%= link_to comment.user.username, comment.user %></h4>
 				<p><%= comment.content %></p>

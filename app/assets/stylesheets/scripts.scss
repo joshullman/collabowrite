@@ -6,6 +6,11 @@
 
 }
 
+
+.scripts_container {
+	text-align: center;
+}
+
 .scripts_container h1 {
 	text-align: center;
 }
@@ -22,6 +27,19 @@
 	padding: 1%;
 }
 
-.scripts_container {
+/* script/show */
+
+.script_container {
+	text-align: center;
+}
+
+.script_frame {
+	height: 800px;
+	width: 625px;
+}
+
+.script_comments_container {
+	width: 625px;
+	margin: 0 auto;
 	text-align: center;
 }
