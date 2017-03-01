@@ -38,7 +38,7 @@ User.create(email: "FrogPrince@aol.com", password: "password", username: "FrogPr
 	is_private == 1 ? is_private = true : is_private = false
 	is_searchable = rand(2)
 	is_searchable == 1 ? is_searchable = true : is_searchable = false
-	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, is_searchable)
+	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, is_searchable: is_searchable)
 	user = rand(34) + 1
 	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true)
 end

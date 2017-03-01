@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(version: 20170215004511) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "is_private"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.boolean  "is_private",         default: true
+    t.boolean  "is_searchable",      default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "scripts", force: :cascade do |t|
