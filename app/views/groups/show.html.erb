@@ -57,20 +57,23 @@
     <% if @members.include?(current_user) %>
       <span class="title" style="text-align: center;"><p>Post Comment</p></span>
     <% end %>
-    <% @comments.each_slice(4) do |comment_row| %>
-      <div class="comment_row">
-        <% comment_row.each do |comment| %>
-          <div class="comment">
-            <p><%= comment.content %></p>
-            <%= link_to comment.user.username, comment.user %>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <div class="comment_info">
+          <%= link_to image_tag(comment.user.avatar.url(:original)), comment.user.avatar.url, class: "icon_thumb" %>
+          <br>
+          <%= link_to comment.user.username, comment.user %>
+          <br>
+          <%= comment.created_at %>
+          <br>
+          <% if comment.user == current_user %>
             <br>
-            <%= comment.created_at %>
-            <% if comment.user == current_user %>
-              <br>
-              <%= link_to 'Delete', comment_path(comment), method: :delete %>
-            <% end %>
-          </div>
-        <% end %>
+            <%= link_to 'Delete', comment_path(comment), method: :delete %>
+          <% end %>
+        </div>
+        <div class="comment_content">
+          <p><%= comment.content %></p>
+        </div>
       </div>
     <% end %>
   </div>

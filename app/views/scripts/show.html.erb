@@ -25,7 +25,7 @@
 	<br>
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
-			<div class="script_comment">
+			<div class="comment">
 				<div class="comment_info">
 					<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user, class: "icon_thumb" %>
 					<br>
