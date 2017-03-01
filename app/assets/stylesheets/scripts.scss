@@ -39,7 +39,24 @@
 }
 
 .script_comments_container {
-	width: 625px;
-	margin: 0 auto;
 	text-align: center;
+	width: 625px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.script_comment {
+	overflow: overlay;
+}
+
+.comment_info {
+	width: 30%;
+	float: left;
+	text-align: center;
+}
+
+.comment_content {
+	width: 70%;
+	float: left;
+	text-align: left;
 }
