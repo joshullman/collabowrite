@@ -5,6 +5,8 @@
 
 <%= render "layouts/profile_bar" %>
 <div class="scripts_container">
+  <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
+  <br>
   <% if !@scripts.empty? %>
     <% @scripts.each_slice(4) do |script_row| %>
       <div class="script_row">

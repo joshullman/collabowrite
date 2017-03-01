@@ -32,10 +32,10 @@
   </div>
 
   <div class="field">
-    <%= f.radio_button :is_private, "Private" %>
-    <%= f.label :is_private, "Private", value: true%>
     <%= f.radio_button :is_private, "Public" %>
     <%= f.label :is_private, "Public", value: false %>
+    <%= f.radio_button :is_private, "Private" %>
+    <%= f.label :is_private, "Private", value: true %>
   </div>
 
   <div class="actions">

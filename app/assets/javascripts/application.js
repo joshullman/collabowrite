@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$('.scripts_container').show();
     $('.groups_container').hide();
     $('.members_container').hide();
-    $('.commeents_container').hide();
+    $('.comments_container').hide();
   });
 
 	$('.groups_button').click(function(){
