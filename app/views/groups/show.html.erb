@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="group_show">
-  <%= link_to image_tag(@group.image.url(:medium)), @group.image.url, class: "icon_medium" %>
+  <%= link_to image_tag(@group.image.url(:original)), @group.image.url, class: "icon_medium" %>
   <h1><%= @group.title %></h1>
   <p><%= @group.description %></p>
 
@@ -26,7 +26,7 @@
 </div>
 <br>
 
-<% if !@group.is_private %>
+<% if !@group.is_private || @members.include?(current_user) %>
   <%= render "layouts/group_bar" %>
   <div class="scripts_container">
     <% if @members.include?(current_user) %>
@@ -62,7 +62,6 @@
         <% comment_row.each do |comment| %>
           <div class="comment">
             <p><%= comment.content %></p>
-            <br>
             <%= link_to comment.user.username, comment.user %>
             <br>
             <%= comment.created_at %>
@@ -81,7 +80,7 @@
       <div class="member_row">
         <% user_row.each do |user| %>
           <div class="member">
-          <%= link_to image_tag(user.avatar.url(:thumb)), user.avatar.url, class: "icon_thumb" %>
+          <%= link_to image_tag(user.avatar.url(:original)), user.avatar.url, class: "icon_thumb" %>
           <br>
           <span class="title"><%= link_to user.username, user %></span>
           <br>

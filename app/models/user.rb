@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_reader :avatar_remote_url
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -28,5 +29,13 @@ class User < ApplicationRecord
 
   def sent_notes
     Note.where(user_id: self.id)
+  end
+
+  def avatar_remote_url=(url_value)
+    self.avatar = URI.parse(url_value)
+    # Assuming url_value is http://example.com/photos/face.png
+    # avatar_file_name == "face.png"
+    # avatar_content_type == "image/png"
+    @avatar_remote_url = url_value
   end
 end

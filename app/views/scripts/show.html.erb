@@ -23,7 +23,7 @@
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
 			<div class="comment">
-				<%= link_to image_tag(comment.user.avatar.url(:square)), comment.user, class: "icon_thumb" %>
+				<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user, class: "icon_thumb" %>
 				<h4><%= link_to comment.user.username, comment.user %></h4>
 				<p><%= comment.content %></p>
 			</div>
