@@ -55,7 +55,17 @@
 
   <div class="comments_container">
     <% if @members.include?(current_user) %>
-      <%= render "comments/form", comment: Comment.new, group: @group, script: false %>
+      <div class="comment">
+        <div class="comment_info">
+          <%= link_to image_tag(current_user.avatar.url(:original)), current_user, class: "icon_thumb" %>
+          <br>
+          <%= link_to current_user.username, current_user %>
+        </div>
+        <div class="comment_content">
+          <%= render "comments/form", comment: Comment.new, group: @group, script: false %>
+        </div>
+      </div>
+      <br>
     <% end %>
     <% @comments.each do |comment| %>
       <div class="comment">
@@ -65,7 +75,6 @@
           <%= link_to comment.user.username, comment.user %>
           <br>
           <%= comment.created_at %>
-          <br>
           <% if comment.user == current_user %>
             <br>
             <%= link_to 'Delete', comment_path(id: comment, group_id: @group.id), method: :delete %>

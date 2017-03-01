@@ -24,7 +24,17 @@
 	<span class="title">Notes</span>
 	<br>
 	<% if @script.user != current_user %>
-		<%= render "comments/form", comment: Comment.new, script: @script %>
+		<div class="comment">
+		  <div class="comment_info">
+		    <%= link_to image_tag(current_user.avatar.url(:original)), current_user, class: "icon_thumb" %>
+		    <br>
+		    <%= link_to current_user.username, current_user %>
+		  </div>
+		  <div class="comment_content">
+				<%= render "comments/form", comment: Comment.new, script: @script %>
+		  </div>
+		</div>
+		<br>
 	<% end %>
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
