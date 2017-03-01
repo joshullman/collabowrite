@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     if @user == current_user
       @scripts = @user.scripts.order(:created_at => :desc)
     else
-      @scripts = @user.scripts.where(is_private: false).order(:created_at => :desc)
+      @scripts = []
+      @scripts << @user.scripts.where(is_private: false).order(:created_at => :desc)
+      @user.scripts.where(is_private: true).each {|script| @scripts << script if script.authorized_viewer?(current_user)}
+      @scripts.flatten!.uniq!
     end
     @groups = @user.accepted_groups.sort_by {|group| group.title }
   end

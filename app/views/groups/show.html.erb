@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="group_show">
-  <%= link_to image_tag(@group.image.url(:original)), @group.image.url, class: "icon_medium" %>
+  <%= image_tag(@group.image.url(:original), class: "icon_medium") %>
   <h1><%= @group.title %></h1>
   <p><%= @group.description %></p>
 
@@ -60,7 +60,7 @@
     <% @comments.each do |comment| %>
       <div class="comment">
         <div class="comment_info">
-          <%= link_to image_tag(comment.user.avatar.url(:original)), comment.user.avatar.url, class: "icon_thumb" %>
+          <%= link_to image_tag(comment.user.avatar.url(:original)), comment.user, class: "icon_thumb" %>
           <br>
           <%= link_to comment.user.username, comment.user %>
           <br>
@@ -84,7 +84,7 @@
       <div class="member_row">
         <% user_row.each do |user| %>
           <div class="member">
-          <%= link_to image_tag(user.avatar.url(:original)), user.avatar.url, class: "icon_thumb" %>
+          <%= link_to image_tag(user.avatar.url(:original)), user, class: "icon_thumb" %>
           <br>
           <span class="title"><%= link_to user.username, user %></span>
           <br>

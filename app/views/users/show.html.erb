@@ -5,7 +5,11 @@
 
 <%= render "layouts/profile_bar" %>
 <div class="scripts_container">
-  <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
+  <% if @user == current_user && @scripts.empty? %>
+    <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
+    Add a script to see them displayed here!
+  <% else %>
+  <% end %>
   <br>
   <% if !@scripts.empty? %>
     <% @scripts.each_slice(4) do |script_row| %>
@@ -25,13 +29,15 @@
         <% end %>
       </div>
     <% end %>
-  <% else %>
-    Add a script to see them displayed here!
+    <% else %>
+    <p>This User hasn't uploaded any scripts!</p>
   <% end %>
 </div>
 
 <div class="groups_container">
-  <% if !@groups.empty? %>
+  <% if @user == current_user && @groups.empty? %>
+    <p>Join a group to see them displayed here!</p>
+  <% elsif !@groups.empty? %>
       <% @groups.each_slice(4) do |group_row| %>
         <div class="group_row">
           <% group_row.each do |group| %>
@@ -41,17 +47,21 @@
               <span class="title"><%= link_to group.title, group %></span>
               <br>
               <% if group.users.include?(current_user) %>
-                <span class="button"><%= link_to "Leave", group_user_path(user: current_user, group: group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></span>
-              <% end %>
-              <% if group.mods.include?(current_user) %>
-                <span class="button"><%= link_to 'Edit', edit_group_path(group) %></span>
-                <span class="button"><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure you want to delete this group?' } %></span>
+                <span class="button"><%= link_to "Leave Group", group_user_path(user: current_user, group: group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></span>
+              <% else %>
+                <% if group.pending?(current_user) %>
+                  (Request Pending...)
+                <% elsif group.is_private %>
+                  (<%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>)
+                <% else %>
+                  (<%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>)
+                <% end %>
               <% end %>
             </div>
           <% end %>
         </div>
       <% end %>
   <% else %>
-    Join a group to see them displayed here!
+    <p>This User hasn't joined any groups!</p>
   <% end %>
 </div>

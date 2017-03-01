@@ -11,6 +11,6 @@ class Script < ApplicationRecord
   validates_attachment_content_type :pdf, :content_type => "application/pdf"
 
   def authorized_viewer?(user)
-  	!(self.user.accepted_groups & user.accepted_groups).empty?
+  	!(self.groups & user.accepted_groups).empty?
   end
 end
