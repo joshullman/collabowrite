@@ -27,11 +27,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    p params
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+      if params[:script_id]
+        format.html { redirect_to script_path(params[:script_id]), notice: 'Comment was successfully destroyed.' }
+      else
+        format.html { redirect_to group_path(params[:group_id]), notice: 'Comment was successfully destroyed.' }
+      end
     end
   end
 

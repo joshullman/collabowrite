@@ -55,7 +55,7 @@
 
   <div class="comments_container">
     <% if @members.include?(current_user) %>
-      <span class="title" style="text-align: center;"><p>Post Comment</p></span>
+      <%= render "comments/form", comment: Comment.new, group: @group, script: false %>
     <% end %>
     <% @comments.each do |comment| %>
       <div class="comment">
@@ -68,7 +68,7 @@
           <br>
           <% if comment.user == current_user %>
             <br>
-            <%= link_to 'Delete', comment_path(comment), method: :delete %>
+            <%= link_to 'Delete', comment_path(id: comment, group_id: @group.id), method: :delete %>
           <% end %>
         </div>
         <div class="comment_content">

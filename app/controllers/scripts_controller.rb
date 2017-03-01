@@ -11,9 +11,9 @@ class ScriptsController < ApplicationController
   # GET /scripts/1.json
   def show
     if @script.user == current_user
-      @comments = @script.comments
+      @comments = @script.comments.order(:created_at => :desc)
     else
-      @comments = @script.comments.where(user_id: current_user.id)
+      @comments = @script.comments.where(user_id: current_user.id).order(:created_at => :desc)
     end
   end
 

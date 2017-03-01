@@ -37,7 +37,7 @@
 					<%= comment.created_at %>
 					<% if comment.user == current_user %>
             <br>
-            <%= link_to 'Delete', comment_path(comment), method: :delete %>
+            <%= link_to 'Delete', comment_path(id: comment, script_id: @script.id), method: :delete %>
           <% end %>
 				</div>
 				<div class="comment_content">
