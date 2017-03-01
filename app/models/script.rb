@@ -1,5 +1,5 @@
 class Script < ApplicationRecord
-
+	validates  :title, presence: { message: "Script must have a title!" }
 	belongs_to :user
 	has_many   :group_scripts
 	has_many   :groups, through: :group_scripts

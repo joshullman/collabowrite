@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  validates  :title, presence: { message: "Group must have a title."}, uniqueness: { message: "Group name is already taken." }
 	has_many   :group_users
 	has_many   :users, through: :group_users
   has_many   :group_scripts

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_reader :avatar_remote_url
+  validates :username, uniqueness: { message: "Username taken." }, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
