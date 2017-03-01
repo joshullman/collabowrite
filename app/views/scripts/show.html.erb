@@ -10,7 +10,7 @@
 		<% if @script.user == current_user %>
 			<%= link_to 'Edit Script', edit_script_path(@script) %>
 			<br>
-		<%= link_to 'Post Script to Group(s)', edit_group_script_path(user: current_user) %>
+		<%= link_to 'Post Script to Group(s)', new_group_script_path(id: nil, script_id: @script) %>
 		<% end %>
 		<br>
 		<iframe src=<%="#{@script.pdf.url}#toolbar=0"%> class="script_frame"></iframe>

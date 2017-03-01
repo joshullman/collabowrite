@@ -30,7 +30,7 @@
   <%= render "layouts/group_bar" %>
   <div class="scripts_container">
     <% if @members.include?(current_user) %>
-    <span class="title" style="text-align: center;"><%= link_to 'Post Script(s) to Group', group_script_path(group: @group) %></span>
+    <span class="title" style="text-align: center;"><%= link_to 'Post Script(s) to Group', new_group_script_path(id: nil, group_id: @group) %></span>
     <% end %>
     <% @scripts.each_slice(4) do |script_row| %>
       <div class="script_row">

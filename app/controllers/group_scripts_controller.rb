@@ -1,8 +1,14 @@
 class GroupScriptsController < ApplicationController
 
-  def edit
-    @scripts = current_user.scripts
-    @groups = current_user.accepted_groups
+  def new
+    p params
+    if params[:script_id]
+      @script = Script.find(params[:script_id])
+      @groups = current_user.accepted_groups
+    else
+      @group = Group.find(params[:group_id])
+      @scripts = current_user.scripts
+    end
   end
 
   # POST /group_scripts

@@ -1,0 +1,23 @@
+<% if @script %>
+	<h1>Which groups would you like to post this script to?</h1>
+	<%= form_tag('/group_scripts', method: 'post') do %>
+		<% @groups.each do |group| %>
+			<%= check_box_tag 'groups[]', group.id -%>
+			<%= group.title %>
+			<%= hidden_field_tag 'script_id', @script.id %>
+		<% end %>
+		<br>
+		<%= submit_tag("Post") %>
+	<% end %>
+<% else %>
+	<h1>Which scripts would you like to post to <%= @group.title %>?</h1>
+	<%= form_tag('/group_scripts', method: 'post') do %>
+		<% @scripts.each do |script| %>
+			<%= check_box_tag 'scripts[]', script.id -%>
+			<%= script.title %>
+			<%= hidden_field_tag 'group_id', @group.id %>
+		<% end %>
+		<br>
+		<%= submit_tag("Post") %>
+	<% end %>
+<% end %>
