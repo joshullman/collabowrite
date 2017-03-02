@@ -14,11 +14,23 @@ class GroupScriptsController < ApplicationController
   # POST /group_scripts
   # POST /group_scripts.json
   def create
-    @group = Group.find(params[:group])
-    params[:scripts].each do |script|
-      @group_script = GroupScript.create(script_id: script, group_id: params[:group])
+    if params[:groups]
+      @script = Script.find(params[:script_id])
+      params[:groups].each do |group_id|
+        GroupScript.create(group_id: group_id, script_id: @script.id)
+      end
+      respond_to do |format|
+        format.html { redirect_to @script, notice: 'Script successfully added to Group(s)' }
+      end
+    else
+      @group = Group.find(params[:group_id])
+      params[:scripts].each do |script_id|
+        GroupScript.create(group_id: @group.id, script_id: @script_id)
+      end
+      respond_to do |format|
+        format.html { redirect_to @group, notice: 'Script(s) successfully added to Group' }
+      end
     end
-    format.html { redirect_to @group, notice: 'Script(s) successfully added to Group' }
   end
 
   # DELETE /group_scripts/1

@@ -12,7 +12,8 @@ class GroupsController < ApplicationController
   def show
     @mods = @group.mods
     @members = @group.members.sort_by {|user| user.username }
-    @scripts = @group.scripts.order(:created_at => :desc)
+    @scripts = @group.scripts.sort_by {|script| script.group_scripts.where(group_id: @group.id).first.created_at}
+    @scripts.reverse!
     @comments = @group.comments.order(:created_at => :desc)
   end
 
