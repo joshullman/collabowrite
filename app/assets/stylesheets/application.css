@@ -22,7 +22,7 @@
 
 .group_thumb img {
 	height: 100px;
-	width: 100px;
+	width: auto;
 }
 
 .script_thumb img {
@@ -35,16 +35,38 @@
 	border: 1px solid red;
 }
 
-.icon_medium img {
-	height: 200px;
-	width: 200px;
+/*.circle_mask {
 	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	z-index: 1;
+	position: absolute;
+	left: 50%;
+}*/
+
+.user_medium {
+	height: 200px;
+	z-index: 0;
+	margin: auto;
 }
 
-.icon_medium {
+.user_medium img {
+	margin: auto;
+	height: 200px;
+	width: auto;
+	z-index: 0;
+}
+
+
+.group_medium img {
+	height: 200px;
+	width: auto;
+}
+
+.group_medium {
 	height: 200px;
 	width: 200px;
-	border-radius: 50%;
 }
 
 html {

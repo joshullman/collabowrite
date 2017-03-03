@@ -1,5 +1,9 @@
 <div class="user_show">
-  <%= image_tag(@user.avatar.url(:original), class: "icon_medium") %>
+  <div class="circle_mask">
+  </div>
+    <div class="user_medium">
+      <%= image_tag(@user.avatar.url(:original)) %>
+    </div>
   <h1><%= @user.username %></h1>
 </div>
 
