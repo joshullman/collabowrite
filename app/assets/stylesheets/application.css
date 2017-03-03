@@ -14,10 +14,25 @@
  *= require_self
  */
 
-.icon_thumb img {
+.user_thumb img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50%;
+}
+
+.group_thumb img {
+	height: 100px;
+	width: 100px;
+}
+
+.script_thumb img {
+	height: 100px;
+	width: 100px;
+}
+
+.group_thumb {
+	background-color: black;
+	border: 1px solid red;
 }
 
 .icon_medium img {

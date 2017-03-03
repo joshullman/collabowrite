@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   	redirect_to user_path(current_user)
   end
 
+  def feedback
+
+  end
+
   private
 
   def set_user

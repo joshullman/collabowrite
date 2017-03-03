@@ -26,8 +26,9 @@
 	<% if @script.user != current_user %>
 		<div class="comment">
 		  <div class="comment_info">
-		    <%= link_to image_tag(current_user.avatar.url(:original)), current_user, class: "icon_thumb" %>
-		    <br>
+		  	<div class="user_thumb">
+		    	<%= link_to image_tag(current_user.avatar.url(:original)), current_user %>
+		    </div>
 		    <%= link_to current_user.username, current_user %>
 		  </div>
 		  <div class="comment_content">
@@ -40,8 +41,9 @@
 		<% @comments.each do |comment| %>
 			<div class="comment">
 				<div class="comment_info">
-					<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user, class: "icon_thumb" %>
-					<br>
+					<div class="user_thumb">
+						<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user %>
+					</div>
 					<%= link_to comment.user.username, comment.user %>
 					<br>
 					<%= comment.created_at %>

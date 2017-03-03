@@ -16,7 +16,9 @@
       <div class="script_row">
         <% script_row.each do |script| %>
           <div class="script">
-            <%= link_to image_tag('script_icon.png'), script, class: "icon_thumb" %>
+            <div class="script_thumb">
+              <%= link_to image_tag('script_icon.png'), script %>
+            </div>
             <br>
             <span class="title"><%= link_to script.title, script %></span>
             <br>
@@ -42,8 +44,10 @@
         <div class="group_row">
           <% group_row.each do |group| %>
             <div class="group">
-              <%= link_to image_tag(group.image.url(:original)), group, class: "icon_thumb" %>
-              <br>
+              <div class="group_thumb">
+                <%= link_to image_tag(group.image.url(:original)), group %>
+              </div>
+
               <span class="title"><%= link_to group.title, group %></span>
               <br>
               <% if group.users.include?(current_user) %>

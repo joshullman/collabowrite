@@ -63,3 +63,5 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 gem 'faker'
+
+gem 'filterrific'

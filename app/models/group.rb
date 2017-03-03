@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_many   :scripts, through: :group_scripts
   has_many   :comments, as: :commentable
 
-	has_attached_file :image, :default_url => "default_group_icon.jpg"
+	has_attached_file :image, :default_url => "default_group_icon.png"
   
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
@@ -31,5 +31,17 @@ class Group < ApplicationRecord
   def pending?(user)
     self.group_users.where(user_id: user.id, accepted: false).first ? true : false
   end
-  
+
+  # filterrific(
+  # default_filter_params: { sorted_by: 'created_at_desc' },
+  # available_filters: [
+  #   :sorted_by,
+  #   :search_query,
+  #   :with_country_id,
+  #   :with_created_at_gte
+  #   ]
+  # )
+
+
+    
 end

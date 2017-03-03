@@ -102,6 +102,8 @@ user.avatar_remote_url = ("http://i.imgur.com/BKH5nxY.jpg")
 user.save
 
 15.times do
+	Group.create(title: "feedback", description, "feedback for Collabowrite", is_private: true, is_searchable: false)
+	GroupUser.create(user_id: 1, group_id: 1, mod: true, accepted: true)
 	is_private = rand(2)
 	is_private == 1 ? is_private = true : is_private = false
 	is_searchable = rand(2)
