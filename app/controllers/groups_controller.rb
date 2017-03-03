@@ -4,7 +4,18 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all.where(is_searchable: true)
+    # @filterrific = initialize_filterrific(
+    #   Group,
+    #   params[:filterrific],
+    #   select_options: {
+    #     sorted_by: Group.options_for_sorted_by
+    #     },
+    #   persistence_id: 'shared_key',
+    #   default_filter_params: {},
+    #   available_filters: [],
+    # ) or return
+    @groups = Group.search(params[:search]).paginate(:page => params[:page]).order('created_at desc')
+    # @groups = @filterrific.find.page(params[:page])
   end
 
   # GET /groups/1
@@ -60,6 +71,18 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
+    group_users = @group.group_users
+    group_scripts = @group.group_scripts
+    comments = @group.comments
+    group_users.each do |user_relation|
+      user_relation.destroy
+    end
+    group_scripts.each do |script_relation|
+      script_relation.destroy
+    end
+    comments.each do |comment|
+      comment.destroy
+    end
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }

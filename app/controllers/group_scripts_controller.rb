@@ -1,7 +1,6 @@
 class GroupScriptsController < ApplicationController
 
   def new
-    p params
     if params[:script_id]
       @script = Script.find(params[:script_id])
       @groups = current_user.accepted_groups

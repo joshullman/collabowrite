@@ -65,3 +65,5 @@ gem 'aws-sdk'
 gem 'faker'
 
 gem 'filterrific'
+
+gem 'will_paginate'

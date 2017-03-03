@@ -1,5 +1,9 @@
 class GroupUsersController < ApplicationController
 
+  def new
+    @user = params[:user_id]
+  end
+
   # POST /group_users
   # POST /group_users.json
   def create

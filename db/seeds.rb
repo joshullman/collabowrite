@@ -101,8 +101,8 @@ user = User.create(email: "FrogPrince@aol.com", password: "password", username: 
 user.avatar_remote_url = ("http://i.imgur.com/BKH5nxY.jpg")
 user.save
 
-15.times do
-	Group.create(title: "feedback", description, "feedback for Collabowrite", is_private: true, is_searchable: false)
+30.times do
+	Group.create(title: "feedback", description: "feedback for Collabowrite", is_private: true, is_searchable: false)
 	GroupUser.create(user_id: 1, group_id: 1, mod: true, accepted: true)
 	is_private = rand(2)
 	is_private == 1 ? is_private = true : is_private = false
@@ -113,7 +113,7 @@ user.save
 	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true)
 end
 
-100.times do
+150.times do
 	user = rand(34) + 1
 	group = rand(10) + 1
 	if !GroupUser.where(user_id: user, group_id: group).first
@@ -129,14 +129,14 @@ end
 	end
 end
 
-100.times do
+150.times do
 	user = rand(34) + 1
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
 	Script.create(user_id: user, title: Faker::Company.name, logline: Faker::Company.bs, description: Faker::Lorem.paragraph, is_private: is_private)
 end
 
-100.times do
+150.times do
 	user = User.all.sample
 	group = user.groups.sample
 	script = user.scripts.sample
@@ -150,7 +150,7 @@ end
 	script.comments.create(content: Faker::Lorem.paragraph, user_id: user_two.id) if script && user != user_two
 end
 
-100.times do
+150.times do
 	group = Group.all.sample
 	user = group.members.sample
 	group.comments.create(content: Faker::Lorem.paragraph, user_id: user.id) if user
