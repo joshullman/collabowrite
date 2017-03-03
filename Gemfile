@@ -67,3 +67,7 @@ gem 'faker'
 gem 'filterrific'
 
 gem 'will_paginate'
+
+gem 'therubyracer'
+gem 'omniauth'
+gem 'omniauth-facebook'
