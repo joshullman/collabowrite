@@ -43,6 +43,7 @@
 
 <div class="groups_container">
   <% if @user == current_user && @groups.empty? %>
+    <span class="title" style="text-align: center;"><%= link_to 'Create a Group', new_group_path %></span>
     <p style="text-align: center;">Join a group to see them displayed here!</p>
   <% elsif !@groups.empty? %>
       <% @groups.each_slice(4) do |group_row| %>
