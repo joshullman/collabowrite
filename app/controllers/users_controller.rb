@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       @user.scripts.where(is_private: true).each {|script| @scripts << script if script.authorized_viewer?(current_user)}
       @scripts.flatten!.uniq!
     end
+    p @user.accepted_groups
     @groups = @user.accepted_groups.sort_by {|group| group.title }
   end
 

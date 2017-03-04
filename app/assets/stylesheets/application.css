@@ -16,8 +16,8 @@
 
 .user_thumb img {
 	height: 100px;
-	width: 100px;
-	border-radius: 50%;
+	width: auto;
+	clip-path: circle(50px at center);
 }
 
 .group_thumb img {
@@ -35,16 +35,6 @@
 	border: 1px solid red;
 }
 
-/*.circle_mask {
-	border-radius: 50%;
-	width: 200px;
-	height: 200px;
-	background-color: black;
-	z-index: 1;
-	position: absolute;
-	left: 50%;
-}*/
-
 .user_medium {
 	height: 200px;
 	z-index: 0;
@@ -52,6 +42,7 @@
 }
 
 .user_medium img {
+	clip-path: circle(100px at center);
 	margin: auto;
 	height: 200px;
 	width: auto;
@@ -60,13 +51,17 @@
 
 
 .group_medium img {
+	clip-path: circle(100px at center);
+	margin: auto;
 	height: 200px;
 	width: auto;
+	z-index: 0;
 }
 
 .group_medium {
 	height: 200px;
-	width: 200px;
+	z-index: 0;
+	margin: auto;
 }
 
 html {

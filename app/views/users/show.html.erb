@@ -2,7 +2,7 @@
   <div class="circle_mask">
   </div>
     <div class="user_medium">
-      <%= image_tag(@user.avatar.url(:original)) %>
+      <%= image_tag(@user.avatar.url(:original), class: "clip_cirlce") %>
     </div>
   <h1><%= @user.username %></h1>
   <p id="notice"><%= notice %></p>

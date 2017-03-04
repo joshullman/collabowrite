@@ -109,13 +109,13 @@ user.save
 	is_searchable = rand(2)
 	is_searchable == 1 ? is_searchable = true : is_searchable = false
 	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, is_searchable: is_searchable)
-	user = rand(34) + 1
+	user = rand(User.all.length) + 1
 	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true)
 end
 
 150.times do
-	user = rand(34) + 1
-	group = rand(10) + 1
+	user = rand(User.all.length) + 1
+	group = rand(Group.all.length) + 1
 	if !GroupUser.where(user_id: user, group_id: group).first
 		mod = rand(2)
 		mod == 1 ? mod = true : mod = false
@@ -130,7 +130,7 @@ end
 end
 
 150.times do
-	user = rand(34) + 1
+	user = rand(User.all.length) + 1
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
 	Script.create(user_id: user, title: Faker::Company.name, logline: Faker::Company.bs, description: Faker::Lorem.paragraph, is_private: is_private)

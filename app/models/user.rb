@@ -23,6 +23,7 @@ class User < ApplicationRecord
     groups = []
     group_users = GroupUser.where(user_id: self.id, accepted: true)
     group_users.each do |group_user|
+      p group_user
       groups << group_user.group
     end
     groups
