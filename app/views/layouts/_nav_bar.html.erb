@@ -3,7 +3,6 @@
 	<% if user %>
 		<%= link_to "Profile", user_path(user) %>
 		<%= link_to "Groups", groups_path %>
-		<%= render 'devise/menu/registration_items' %>
 		<%= render 'devise/menu/login_items' %>
 	<% end %>
 </div>
