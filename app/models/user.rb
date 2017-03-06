@@ -30,9 +30,10 @@ class User < ApplicationRecord
   end
 
   def avatar_remote_url=(url_value)
-    self.avatar = URI.parse(url_value)
-    # Assuming url_value is http://example.com/photos/face.png
     p "I'm in the avatar method"
+    self.avatar = URI.parse(url_value)
+    self.save
+    # Assuming url_value is http://example.com/photos/face.png
     p self
   end
 
@@ -44,7 +45,9 @@ class User < ApplicationRecord
       user.username = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save
+      user.save!
+      user.avatar_remote_url = (auth.info.picture)
+      user.save!
       p user
       user.avatar_remote_url = ("http://graph.facebook.com/#{auth.uid}/picture?type=large")
       user.save!
