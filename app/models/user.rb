@@ -46,7 +46,7 @@ class User < ApplicationRecord
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
       p user
-      user.avatar_remote_url=("http://graph.facebook.com/#{auth.uid}/picture?type=large")
+      user.avatar_remote_url=("http://graph.facebook.com/#{auth.uid}?picture.type(large)")
       user.save!
       p user
     end
