@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   def avatar_remote_url=(url_value)
     p "I'm in the avatar method"
+    p url_value
     self.avatar = URI.parse(url_value)
     self.save
     # Assuming url_value is http://example.com/photos/face.png
@@ -39,6 +40,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     p "I get here fine"
+    p auth
      where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -46,12 +48,12 @@ class User < ApplicationRecord
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
-      user.avatar_remote_url = (auth.info.picture)
+      user.avatar_remote_url = (auth.info.image)
       user.save!
-      p user
-      user.avatar_remote_url = ("http://graph.facebook.com/#{auth.uid}/picture?type=large")
-      user.save!
-      p user
+      # p user
+      # user.avatar_remote_url = ("https://graph.facebook.com/#{auth.uid}?fields=picture.type(large)")
+      # user.save!
+      # p user
     end
 
   end
