@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="group_options">
+  <span class="title"><%= link_to 'Create a New Group!', new_group_path %></span>
   <%= form_tag groups_path, :method => 'get' do %>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search", :title => nil %>
   <% end %>
-  <%= link_to 'Create a New Group!', new_group_path %>
-  <br>
 </div>
 
 
