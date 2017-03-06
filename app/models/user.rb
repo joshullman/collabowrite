@@ -60,7 +60,6 @@ class User < ApplicationRecord
       p "2 #{user}"
 
     end
-    p "3"
   end
 
   def self.new_with_session(params, session)
