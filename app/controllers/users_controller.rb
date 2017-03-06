@@ -18,12 +18,8 @@ class UsersController < ApplicationController
     @groups = @user.accepted_groups.sort_by {|group| group.title }
   end
 
-  def profile
-  	redirect_to user_path(current_user)
-  end
-
-  def feedback
-
+  def login
+  	
   end
 
   private

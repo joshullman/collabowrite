@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {registrations: 'registrations', :omniauth_callbacks => "callbacks"}
-
-  devise_scope :user do
-    authenticated :user do
-      root 'users#profile', as: :authenticated_root
-      get 'profile' => "users#profile"
-    end
-
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
-
+  
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  root 'users#login'
   resources :users, only: [:show]
   resources :scripts, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :groups
