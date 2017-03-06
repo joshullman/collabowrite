@@ -50,9 +50,12 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.username = auth.info.name   # assuming the user model has a name
       user.avatar_remote_url=("http://graph.facebook.com/#{user.uid}/picture?type=large") # assuming the user model has an image
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
+      user.save!
     end
   end
 
