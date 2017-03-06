@@ -42,10 +42,13 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.username = auth.info.name
-      user.avatar_remote_url=("http://graph.facebook.com/#{auth.uid}/picture?type=large")
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
+      p user
+      user.avatar_remote_url=("http://graph.facebook.com/#{auth.uid}/picture?type=large")
+      user.save!
+      p user
     end
 
   end
