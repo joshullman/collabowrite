@@ -30,16 +30,14 @@ class User < ApplicationRecord
   end
 
   def avatar_remote_url=(url_value)
-    p "3 - remote"
     self.avatar = URI.parse(url_value)
     # Assuming url_value is http://example.com/photos/face.png
-    # avatar_file_name == "face.png"
-    # avatar_content_type == "image/png"
-    @avatar_remote_url = url_value
+    p "I'm in the avatar method"
+    p self
   end
 
   def self.from_omniauth(auth)
-
+    p "I get here fine"
      where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.provider = auth.provider
       user.uid = auth.uid
