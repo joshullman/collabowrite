@@ -35,6 +35,7 @@ class User < ApplicationRecord
   end
 
   def avatar_remote_url=(url_value)
+    p "3 - remote"
     self.avatar = URI.parse(url_value)
     # Assuming url_value is http://example.com/photos/face.png
     # avatar_file_name == "face.png"
@@ -43,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    p "2"
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -56,6 +57,8 @@ class User < ApplicationRecord
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
+      p "2 #{user}"
+
     end
     p "3"
   end

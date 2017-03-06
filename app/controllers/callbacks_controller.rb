@@ -1,7 +1,8 @@
 class CallbacksController < Devise::OmniauthCallbacksController
 
 	def facebook
-    p "1"
+
+    p "1 - #{env["omniauth.auth"]}"
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
