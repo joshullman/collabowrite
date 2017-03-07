@@ -69,3 +69,7 @@ gem 'will_paginate'
 gem 'therubyracer'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem 'factory_girl_rails'
+
+gem 'hint'

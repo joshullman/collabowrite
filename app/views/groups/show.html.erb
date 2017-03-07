@@ -6,14 +6,12 @@
   <p><%= @group.description %></p>
 
   <% if @mods.include?(current_user) %>
-    <%= link_to 'Edit Group', edit_group_path(@group) %>
-    <br>
-    <%= link_to 'Delete Group', group_path(@group), method: :delete, data: {confirm: "Are you SURE you want to delete this group?  Script notes will still be available but the Group will become unrecoverable.  Proceed?"}  %>
-    <br>
+    <%= link_to 'Edit Group', edit_group_path(@group) %> | 
+    <%= link_to 'Delete Group', group_path(@group), method: :delete, data: {confirm: "Are you SURE you want to delete this group?  Script notes will still be available but the Group will become unrecoverable.  Proceed?"}  %> | 
   <% end %>
 
   <% if @members.include?(current_user) %>
-    <%= link_to "Leave Group", group_user_path(id: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %>
+    <%= link_to "Leave Group", group_user_path(id: current_user, group: @group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %> 
   <% else %>
     <% if @group.pending?(current_user) %>
     <p>You don't have permission to view this group!</p>

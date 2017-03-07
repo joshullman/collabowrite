@@ -83,6 +83,11 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     faker (1.7.3)
       i18n (~> 0.5)
     faraday (0.11.0)
@@ -92,6 +97,8 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.5.5)
+    hint (1.2.2)
+      sass (>= 3.2.0)
     i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -238,8 +245,10 @@ DEPENDENCIES
   capistrano-rails (~> 1.2)
   capistrano-rbenv (~> 2.1)
   coffee-rails (~> 4.2)
+  factory_girl_rails
   faker
   filterrific
+  hint
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks

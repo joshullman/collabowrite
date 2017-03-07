@@ -32,10 +32,14 @@
   </div>
 
   <div class="field">
-    <%= f.radio_button :is_private, "Public" %>
-    <%= f.label :is_private, "Public", value: false %>
-    <%= f.radio_button :is_private, "Private" %>
-    <%= f.label :is_private, "Private", value: true %>
+    <span class="hint--top hint--medium" data-hint="This script can be seen and commented on by anyone.">
+      <%= f.radio_button :is_private, "Public" %>
+      <%= f.label :is_private, "Public", value: false %>
+    </span>
+    <span class="hint--top hint--medium" data-hint="This script can only be seen and commented on by group members.">
+      <%= f.radio_button :is_private, "Private" %>
+      <%= f.label :is_private, "Private", value: true %>
+    </span>
   </div>
 
   <div class="actions">

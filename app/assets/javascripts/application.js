@@ -18,6 +18,7 @@
 
 $(document).ready(function(){
 
+	//Facebook 
 	jQuery(function() {
 	  $('body').prepend('<div id="fb-root"></div>');
 	  return $.ajax({
@@ -48,6 +49,8 @@ $(document).ready(function(){
 	    return true;
 	  });
 	};
+
+	//Profile and group buttons
 
 	$('.scripts_button').click(function(){
 		$('.scripts_button').css("text-decoration", "underline");
@@ -92,5 +95,7 @@ $(document).ready(function(){
     $('.members_container').hide();
     $('.comments_container').show();
   });
+
+  //Tooltips
 
 });

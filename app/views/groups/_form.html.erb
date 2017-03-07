@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, autocomplete: "off" %>
+    <%= f.text_field :title, autofocus: true, autocomplete: "off", size: "50" %>
   </div>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description, autocomplete: "off" %>
+    <%= f.text_area :description, autocomplete: "off", cols: "50", rows: "10" %>
   </div>
 
   <div class="field">
@@ -27,12 +27,19 @@
   </div>
 
   <div class="field">
-    <%= f.radio_button :is_private, "Private" %>
-    <%= f.label :is_private, "Private", value: true%>
-    <%= f.radio_button :is_private, "Public" %>
-    <%= f.label :is_private, "Public", value: false %>
-    <%= f.radio_button :is_searchable, "Searchable" %>
-    <%= f.label :is_searchable, "Searchable", value: true %>
+    <span class="hint--top hint--medium" data-hint="This group can be joined by anyone.">
+      <%= f.radio_button :is_private, "Public" %>
+      <%= f.label :is_private, "Public", value: false %>
+    </span>
+    <span class="hint--top hint--medium" data-hint="This group requires users to request to join.">
+      <%= f.radio_button :is_private, "Private" %>
+      <%= f.label :is_private, "Private", value: true%>
+    </span>
+    <br>
+    <span class="hint--top hint--medium" data-hint="This group requires the exact group title to find.">
+      <%= f.radio_button :is_searchable, "Searchable" %>
+      <%= f.label :is_searchable, "Searchable", value: true %>
+    </span>
   </div>
 
   <div class="actions">
