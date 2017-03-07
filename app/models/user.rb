@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  attr_reader :avatar_remote_url
-
 
   has_many   :scripts
   has_many   :group_users

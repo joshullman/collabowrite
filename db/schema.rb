@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20170303224504) do
     t.datetime "updated_at",                    null: false
     t.string   "provider"
     t.string   "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["username"], name: "index_users_on_username", using: :btree
   end
 
 end
