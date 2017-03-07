@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   	
   end
 
+  def failure
+
+  end
+
   private
 
   def set_user
