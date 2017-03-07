@@ -27,7 +27,7 @@
 		<div class="comment">
 		  <div class="comment_info">
 		  	<div class="user_thumb">
-		    	<%= link_to image_tag(current_user.avatar.url(:original)), current_user %>
+		    	<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=large"), current_user %>
 		    </div>
 		    <%= link_to current_user.username, current_user %>
 		  </div>
@@ -42,7 +42,7 @@
 			<div class="comment">
 				<div class="comment_info">
 					<div class="user_thumb">
-						<%= link_to image_tag(comment.user.avatar.url(:original)), comment.user %>
+						<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=large"), comment.user %>
 					</div>
 					<%= link_to comment.user.username, comment.user %>
 					<br>

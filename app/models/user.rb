@@ -7,10 +7,6 @@ class User < ApplicationRecord
   has_many   :groups, through: :group_users
   has_many   :comments
 
-  has_attached_file :avatar, :default_url => "default_user_icon.svg"
-  
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
   def accepted_member?(group)
     GroupUser.where(user_id: self.id, group_id: group.id).first.accepted
   end
@@ -27,13 +23,6 @@ class User < ApplicationRecord
 
   def sent_notes
     Note.where(user_id: self.id)
-  end
-
-  def avatar_remote_url=(url_value)
-    self.avatar = URI.parse(url_value)
-    self.save
-    # Assuming url_value is http://example.com/photos/face.png
-    p self
   end
 
   def self.from_omniauth(auth)
