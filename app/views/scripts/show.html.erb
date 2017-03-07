@@ -7,10 +7,10 @@
 		<p>Written by: <%= link_to @script.user.username, @script.user %></p>
 		<p>Logline: <%= @script.logline %></p>
 		<p>Description: <%= @script.description %></p>
+		<br>
 		<% if @script.user == current_user %>
-			<%= link_to 'Edit Script', edit_script_path(@script) %>
-			<br>
-		<%= link_to 'Post Script to Group(s)', new_group_script_path(id: nil, script_id: @script) %>
+			<div class="title"><%= link_to 'Edit Script', edit_script_path(@script) %></div>
+		<div class="title"><%= link_to 'Post Script to Group(s)', new_group_script_path(id: nil, script_id: @script) %></div>
 		<% end %>
 		<br>
 		<iframe src=<%="#{@script.pdf.url}#toolbar=0"%> class="script_frame"></iframe>
@@ -23,7 +23,7 @@
 <div class="script_comments_container">
 	<span class="title">Notes</span>
 	<br>
-	
+
 	<% if @script.user != current_user %>
 		<div class="comment">
 		  <div class="comment_info">

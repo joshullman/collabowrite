@@ -21,14 +21,16 @@ class GroupScriptsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @script, notice: 'Script successfully added to Group(s)' }
       end
-    else
+    elsif params[:scripts]
       @group = Group.find(params[:group_id])
       params[:scripts].each do |script_id|
-        GroupScript.create(group_id: @group.id, script_id: @script_id)
+        GroupScript.create(group_id: @group.id, script_id: script_id)
       end
       respond_to do |format|
         format.html { redirect_to @group, notice: 'Script(s) successfully added to Group' }
       end
+    else
+      redirect_to current_user, notice: "No Group or Script selected!"
     end
   end
 
