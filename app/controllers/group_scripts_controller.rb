@@ -16,7 +16,7 @@ class GroupScriptsController < ApplicationController
     if params[:groups]
       @script = Script.find(params[:script_id])
       params[:groups].each do |group_id|
-        GroupScript.create(group_id: group_id, script_id: @script.id)
+        GroupScript.create(group_id: group_id, script_id: @script.id) if !GroupScript.where(group_id: group_id, script_id: @script.id).first
       end
       respond_to do |format|
         format.html { redirect_to @script, notice: 'Script successfully added to Group(s)' }
@@ -24,7 +24,7 @@ class GroupScriptsController < ApplicationController
     elsif params[:scripts]
       @group = Group.find(params[:group_id])
       params[:scripts].each do |script_id|
-        GroupScript.create(group_id: @group.id, script_id: script_id)
+        GroupScript.create(group_id: @group.id, script_id: script_id) if !GroupScript.where(group_id: @group.id, script_id: script_id).first
       end
       respond_to do |format|
         format.html { redirect_to @group, notice: 'Script(s) successfully added to Group' }

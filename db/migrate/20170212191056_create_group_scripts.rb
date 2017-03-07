@@ -6,5 +6,7 @@ class CreateGroupScripts < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :group_scripts, [:group_id, :script_id], unique: true, name: "by_group_and_script"
+
   end
 end

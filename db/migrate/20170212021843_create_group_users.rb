@@ -8,5 +8,6 @@ class CreateGroupUsers < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :group_users, [:group_id, :user_id], unique: true, name: "by_group_and_user"
   end
 end

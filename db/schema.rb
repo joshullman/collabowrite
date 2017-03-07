@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170303224504) do
     t.integer  "script_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id", "script_id"], name: "by_group_and_script", unique: true, using: :btree
   end
 
   create_table "group_users", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170303224504) do
     t.boolean  "accepted",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["group_id", "user_id"], name: "by_group_and_user", unique: true, using: :btree
   end
 
   create_table "groups", force: :cascade do |t|
@@ -73,7 +75,6 @@ ActiveRecord::Schema.define(version: 20170303224504) do
     t.string   "username"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "photo_url"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "provider"

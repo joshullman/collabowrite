@@ -15,7 +15,7 @@ user = User.create(email: "Kassanova@aol.com", username: "Kassanova")
 user = User.create(email: "Scoob@aol.com", username: "Scoobs")
 user = User.create(email: "Chefe@aol.com", username: "Chefe")
 user = User.create(email: "TheAdmiral@aol.com", username: "TheAdmiral")
-user = User.create(email: "Jenga@aol.com", username: "Jenga"))
+user = User.create(email: "Jenga@aol.com", username: "Jenga")
 user = User.create(email: "Banner@aol.com", username: "Banner")
 user = User.create(email: "BigKahuna@aol.com", username: "BigKahuna")
 user = User.create(email: "BennyAndTheJets@aol.com", username: "BennyAndTheJets")
@@ -33,16 +33,16 @@ user = User.create(email: "BrickThorn@aol.com", username: "BrickThorn")
 user = User.create(email: "ChampMan@aol.com", username: "ChampMan")
 user = User.create(email: "FrogPrince@aol.com", username: "FrogPrince")
 
+Group.create(title: "Collabowrite Feedback", description: "feedback for Collabowrite", is_private: true, is_searchable: false)
+GroupUser.create(user_id: 1, group_id: 1, mod: true, accepted: true)
 30.times do
-	Group.create(title: "feedback", description: "feedback for Collabowrite", is_private: true, is_searchable: false)
-	GroupUser.create(user_id: 1, group_id: 1, mod: true, accepted: true)
 	is_private = rand(2)
 	is_private == 1 ? is_private = true : is_private = false
 	is_searchable = rand(2)
 	is_searchable == 1 ? is_searchable = true : is_searchable = false
 	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, is_searchable: is_searchable)
 	user = rand(User.all.length) + 1
-	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true)
+	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true) if !GroupUser.where(user_id: user, group_id: group.id).first
 end
 
 150.times do
