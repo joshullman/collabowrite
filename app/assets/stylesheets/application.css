@@ -51,7 +51,6 @@
 
 
 .group_medium img {
-	clip-path: circle(100px at center);
 	margin: auto;
 	height: 200px;
 	width: auto;

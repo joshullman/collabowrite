@@ -3,6 +3,6 @@
 	<% if user %>
 		<%= link_to "Profile", user_path(user) %>
 		<%= link_to "Groups", groups_path %>
-		<%= render 'layouts/registrations' %>
+		<%= link_to "Sign out", signout_path, id: "sign_out" %>
 	<% end %>
 </div>

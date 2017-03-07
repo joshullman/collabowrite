@@ -31,9 +31,11 @@
 <% if !@group.is_private || @members.include?(current_user) %>
   <%= render "layouts/group_bar" %>
   <div class="scripts_container">
+    <br>
     <% if @members.include?(current_user) %>
     <span class="title" style="text-align: center;"><%= link_to 'Post Script(s) to Group', new_group_script_path(id: nil, group_id: @group) %></span>
     <% end %>
+    <br>
     <% @scripts.each_slice(4) do |script_row| %>
       <div class="script_row">
         <% script_row.each do |script| %>
@@ -56,6 +58,7 @@
   </div>
 
   <div class="comments_container">
+    <br>
     <% if @members.include?(current_user) %>
       <div class="comment">
         <div class="comment_info">
@@ -93,6 +96,7 @@
   </div>
 
   <div class="members_container">
+    <br>
     <% @members.each_slice(4) do |user_row| %>
       <div class="member_row">
         <% user_row.each do |user| %>

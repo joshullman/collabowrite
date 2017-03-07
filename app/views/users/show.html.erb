@@ -10,6 +10,7 @@
 
 <%= render "layouts/profile_bar" %>
 <div class="scripts_container">
+  <br>
   <% if @user == current_user && @scripts.empty? %>
     <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
     <p>Add a script to see them displayed here!</p>
@@ -42,6 +43,7 @@
 </div>
 
 <div class="groups_container">
+  <br>
   <% if @user == current_user && @groups.empty? %>
     <span class="title" style="text-align: center;"><%= link_to 'Create a Group', new_group_path %></span>
     <p style="text-align: center;">Join a group to see them displayed here!</p>

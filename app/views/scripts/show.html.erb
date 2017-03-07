@@ -23,6 +23,7 @@
 <div class="script_comments_container">
 	<span class="title">Notes</span>
 	<br>
+	
 	<% if @script.user != current_user %>
 		<div class="comment">
 		  <div class="comment_info">
@@ -37,6 +38,7 @@
 		</div>
 		<br>
 	<% end %>
+
 	<% if !@comments.empty? %>
 		<% @comments.each do |comment| %>
 			<div class="comment">
