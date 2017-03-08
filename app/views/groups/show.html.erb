@@ -112,7 +112,7 @@
                 (<%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %>)
               <% end %>
               
-              <% if @mods.include?(user) && user.accepted_member?(@group) %>
+              <% if @mods.include?(user) && user.accepted_member?(@group) && user != current_user %>
                 (<%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %>)
               <% else %>
                 (<%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %>)

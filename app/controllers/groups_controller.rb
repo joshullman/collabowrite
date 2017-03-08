@@ -70,7 +70,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
     group_users = @group.group_users
     group_scripts = @group.group_scripts
     comments = @group.comments
@@ -83,6 +82,7 @@ class GroupsController < ApplicationController
     comments.each do |comment|
       comment.destroy
     end
+    @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }

@@ -57,10 +57,23 @@ class GroupUsersController < ApplicationController
   # DELETE /group_users/1.json
   def destroy
     @group = Group.find(params[:group])
-    group = GroupUser.where(user_id: params[:id], group_id: params[:group]).first
-    group.destroy
-    respond_to do |format|
-      format.html { redirect_to @group, notice: 'Successfully left group.' }
+    group_user = GroupUser.where(user_id: params[:id], group_id: params[:group]).first
+    group_user.destroy
+    if @group.users.empty?
+      @group.comments.each do |comment|
+        comment.destroy
+      end
+      @group.group_scripts.each do |script|
+        script.destroy
+      end
+      @group.destroy
+      respond_to do |format|
+        format.html { redirect_to current_user, notice: 'Group destroyed' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @group, notice: 'Successfully left group.' }
+      end
     end
   end
 
