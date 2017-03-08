@@ -11,10 +11,11 @@
 <%= render "layouts/profile_bar" %>
 <div class="scripts_container">
   <br>
+  <% if @user == current_user %>
+    <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
+  <% end %>
   <% if @user == current_user && @scripts.empty? %>
     <p>Add a script to see them displayed here!</p>
-  <% elsif @user == current_user %>
-    <span class="title" style="text-align: center;"><%= link_to 'Upload Script', new_script_path %></span>
   <% end %>
   <br>
   <% if !@scripts.empty? %>
