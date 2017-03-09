@@ -17,52 +17,52 @@
 		<br>
 		<iframe src=<%="#{@script.pdf.url}#toolbar=0"%> class="script_frame"></iframe>
 		<br>
+		<div class="script_comments_container">
+			<span class="title">Notes</span>
+			<br>
+
+			<% if @script.user != current_user %>
+				<div class="comment">
+				  <div class="comment_info">
+				  	<div class="user_thumb">
+				    	<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=large"), current_user %>
+				    </div>
+				    <%= link_to current_user.username, current_user %>
+				  </div>
+				  <div class="comment_content">
+						<%= render "comments/form", comment: Comment.new, script: @script %>
+				  </div>
+				</div>
+				<br>
+			<% end %>
+
+			<% if !@comments.empty? %>
+				<% @comments.each do |comment| %>
+					<div class="comment">
+						<div class="comment_info">
+							<div class="user_thumb">
+								<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=large"), comment.user %>
+							</div>
+							<%= link_to comment.user.username, comment.user %>
+							<br>
+							<%= comment.created_at %>
+							<% if comment.user == current_user %>
+		            <br>
+		            <%= link_to 'Delete', comment_path(id: comment, script_id: @script.id), method: :delete %>
+		          <% end %>
+						</div>
+						<div class="comment_content">
+							<p><%= comment.content %></p>
+						</div>
+					</div>
+					<br>
+				<% end %>
+			<% else %>
+				No notes yet!
+			<% end %>
+		</div>
 	<% else %>
 		You don't have permission to view this script!
 	<% end %>
-</div>
 
-<div class="script_comments_container">
-	<span class="title">Notes</span>
-	<br>
-
-	<% if @script.user != current_user %>
-		<div class="comment">
-		  <div class="comment_info">
-		  	<div class="user_thumb">
-		    	<%= link_to image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=large"), current_user %>
-		    </div>
-		    <%= link_to current_user.username, current_user %>
-		  </div>
-		  <div class="comment_content">
-				<%= render "comments/form", comment: Comment.new, script: @script %>
-		  </div>
-		</div>
-		<br>
-	<% end %>
-
-	<% if !@comments.empty? %>
-		<% @comments.each do |comment| %>
-			<div class="comment">
-				<div class="comment_info">
-					<div class="user_thumb">
-						<%= link_to image_tag("http://graph.facebook.com/#{comment.user.uid}/picture?type=large"), comment.user %>
-					</div>
-					<%= link_to comment.user.username, comment.user %>
-					<br>
-					<%= comment.created_at %>
-					<% if comment.user == current_user %>
-            <br>
-            <%= link_to 'Delete', comment_path(id: comment, script_id: @script.id), method: :delete %>
-          <% end %>
-				</div>
-				<div class="comment_content">
-					<p><%= comment.content %></p>
-				</div>
-			</div>
-			<br>
-		<% end %>
-	<% else %>
-		No notes yet!
-	<% end %>
 </div>
