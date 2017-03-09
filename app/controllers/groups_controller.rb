@@ -57,7 +57,14 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    p group_params
+    pending = @group.pending
+    if group_params[:is_private] == "false" && !pending.empty?
+      pending.each do |user|
+        gu = GroupUser.find(user_id: user, group_id: @group)
+        gu.accepted = true
+        gu.save
+      end
+    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
