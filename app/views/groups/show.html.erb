@@ -107,15 +107,15 @@
             <% if @mods.include?(current_user) && user != current_user %>
               
               <% if user.accepted_member?(@group) %>
-                (<%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %>)
+                (<%= link_to "Remove", group_user_path(id: @group, user: user,), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %>)
               <% else %>
-                (<%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %>)
+                (<%= link_to "Add", group_user_path(id: @group, user: user, accepted: true), method: :patch %>)
               <% end %>
               
               <% if @mods.include?(user) && user.accepted_member?(@group) %>
-                (<%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %>)
+                (<%= link_to "Demote", group_user_path(id: @group, user: user, create_mod: false), method: :patch %>)
               <% else %>
-                (<%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %>)
+                (<%= link_to "Promote", group_user_path(id: @group, user: user, create_mod: true), method: :patch %>)
               
               <% end %>
             <% else %>
@@ -129,8 +129,10 @@
         <% end %>
       </div>
     <% end %>
+    <br>
     <% if @mods.include?(current_user) %>
       <div class="title" style="text-align: center;">Group Requests</div>
+      <br>
       <% @pending.each_slice(4) do |user_row| %>
         <div class="member_row">
           <% user_row.each do |user| %>

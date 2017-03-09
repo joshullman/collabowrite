@@ -31,8 +31,8 @@ class GroupUsersController < ApplicationController
   # PATCH/PUT /group_users/1
   # PATCH/PUT /group_users/1.json
   def update
-    @group = Group.find(params[:group])
-    @group_user = GroupUser.where(user_id: params[:id], group_id: params[:group]).first
+    @group = Group.find(params[:id])
+    @group_user = GroupUser.where(user_id: params[:user], group_id: params[:id]).first
     p params
     if params[:create_mod] == "true"
       @group_user.mod = true
@@ -56,8 +56,8 @@ class GroupUsersController < ApplicationController
   # DELETE /group_users/1
   # DELETE /group_users/1.json
   def destroy
-    @group = Group.find(params[:group])
-    group_user = GroupUser.where(user_id: params[:id], group_id: params[:group]).first
+    @group = Group.find(params[:id])
+    group_user = GroupUser.where(user_id: params[:user], group_id: params[:id]).first
     group_user.destroy
     if @group.users.empty?
       @group.comments.each do |comment|
