@@ -10,7 +10,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
-    if @script.user == current_user
+    if @script.user == current_user || @script.public_comments
       @comments = @script.comments.order(:created_at => :desc)
     else
       @comments = @script.comments.where(user_id: current_user.id).order(:created_at => :desc)
@@ -74,6 +74,6 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:title, :logline, :description, :pdf, :is_private)
+      params.require(:script).permit(:title, :logline, :description, :pdf, :is_private, :public_comments)
     end
 end

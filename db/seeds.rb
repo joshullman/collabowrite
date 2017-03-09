@@ -65,7 +65,9 @@ end
 	user = rand(User.all.length) + 1
 	flip = rand(2)
 	flip == 1 ? is_private = true : is_private = false
-	Script.create(user_id: user, title: Faker::Company.name, logline: Faker::Company.bs, description: Faker::Lorem.paragraph, is_private: is_private)
+	pub_comments = rand(2)
+	pub_comments == 1 ? pub_comments = true : pub_comments = false
+	Script.create(user_id: user, title: Faker::Company.name, logline: Faker::Company.bs, description: Faker::Lorem.paragraph, is_private: is_private, public_comments: pub_comments)
 end
 
 150.times do

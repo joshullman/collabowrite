@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class="group_show">
-  <%= image_tag(@group.image.url(:original), class: "group_medium") %>
-  <h1><%= @group.title %></h1>
-  <p><%= @group.description %></p>
+  <div class="group_info">
+    <%= image_tag(@group.image.url(:original), class: "group_medium") %>
+    <h1><%= @group.title %></h1>
+    <p style="width: 50%; margin: auto;"><%= @group.description %></p>
+  </div>
+  <br>
 
   <% if @mods.include?(current_user) %>
     <%= link_to 'Edit Group', edit_group_path(@group) %> | 

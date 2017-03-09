@@ -32,14 +32,31 @@
   </div>
 
   <div class="field">
-    <span class="hint--top hint--medium" data-hint="This script can be seen and commented on by anyone.">
-      <%= f.radio_button :is_private, "Public" %>
-      <%= f.label :is_private, "Public", value: false %>
-    </span>
-    <span class="hint--top hint--medium" data-hint="This script can only be seen and commented on by group members.">
-      <%= f.radio_button :is_private, "Private" %>
-      <%= f.label :is_private, "Private", value: true %>
-    </span>
+    <% if script.is_private %>
+      <span class="hint--top hint--medium" data-hint="This script should be seen and commented on by anyone.">
+        <%= f.radio_button :is_private, false %>
+        <%= f.label :is_private, "Change to Public", value: false %>
+      </span>
+    <% else %>
+      <span class="hint--top hint--medium" data-hint="This script should only be seen and commented on by group members.">
+        <%= f.radio_button :is_private, true %>
+        <%= f.label :is_private, "Change to Private", value: true %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <% if script.public_comments %>
+      <span class="hint--top hint--medium" data-hint="This script's comments should only be seen by me.">
+        <%= f.radio_button :public_comments, false %>
+        <%= f.label :public_comments, "Change to Private Comments", value: false %>
+      </span>
+    <% else %>
+      <span class="hint--top hint--medium" data-hint="This script's comments should be seen by everyone.">
+        <%= f.radio_button :public_comments, true %>
+        <%= f.label :public_comments, "Change to Public Comments", value: true %>
+      </span>
+    <% end %>
   </div>
 
   <div class="actions">

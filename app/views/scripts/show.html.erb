@@ -3,10 +3,12 @@
 <div class="script_container">
 	<% if !@script.is_private || @script.is_private && @script.user == current_user || @script.authorized_viewer?(current_user) %>
 
-		<h1 style="text-decoration: underline"><%= @script.title %></h1>
-		<p>Written by: <%= link_to @script.user.username, @script.user %></p>
-		<p>Logline: <%= @script.logline %></p>
-		<p>Description: <%= @script.description %></p>
+		<div class="script_info">
+			<h1 style="text-decoration: underline"><%= @script.title %></h1>
+			<p>Written by:<br><%= link_to @script.user.username, @script.user %></p>
+			<p>Logline:<br><%= @script.logline %></p>
+			<p style="width: 50%; margin: auto">Description:<br><%= @script.description %></p>
+		</div>
 		<br>
 		<% if @script.user == current_user %>
 			<div class="title"><%= link_to 'Edit Script', edit_script_path(@script) %></div>
