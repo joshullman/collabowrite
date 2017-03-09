@@ -129,5 +129,40 @@
         <% end %>
       </div>
     <% end %>
+    <div class="title" style="text-align: center;">Group Requests</div>
+    <% @pending.each_slice(4) do |user_row| %>
+      <div class="member_row">
+        <% user_row.each do |user| %>
+          <div class="member">
+            <div class="user_thumb">
+              <%= link_to image_tag("http://graph.facebook.com/#{user.uid}/picture?type=large"), user, class: "user_thumb" %>
+            </div>
+            <span class="title"><%= link_to user.username, user %></span>
+            <br>
+            <% if @mods.include?(current_user) && user != current_user %>
+              
+              <% if user.accepted_member?(@group) %>
+                (<%= link_to "Remove", group_user_path(user: user, group: @group), method: :delete, data: {confirm: "Are you sure you want to remove this user from the group?"} %>)
+              <% else %>
+                (<%= link_to "Add", group_user_path(user: user, group: @group, accepted: true), method: :patch %>)
+              <% end %>
+              
+              <% if @mods.include?(user) && user.accepted_member?(@group) %>
+                (<%= link_to "Demote", group_user_path(user: user, group: @group, create_mod: false), method: :patch %>)
+              <% else %>
+                (<%= link_to "Promote", group_user_path(user: user, group: @group, create_mod: true), method: :patch %>)
+              
+              <% end %>
+            <% else %>
+            
+              <% if @mods.include?(user) %>
+                (Mod)
+              <%end%>
+
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>

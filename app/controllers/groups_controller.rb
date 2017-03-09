@@ -26,6 +26,7 @@ class GroupsController < ApplicationController
     @scripts = @group.scripts.sort_by {|script| script.group_scripts.where(group_id: @group.id).first.created_at}
     @scripts.reverse!
     @comments = @group.comments.order(:created_at => :desc)
+    @pending = @group.pending.sort_by {|user| user.username }
   end
 
   # GET /groups/new

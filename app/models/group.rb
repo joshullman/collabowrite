@@ -32,6 +32,15 @@ class Group < ApplicationRecord
     self.group_users.where(user_id: user.id, accepted: false).first ? true : false
   end
 
+  def pending
+    members = []
+    group_users = self.group_users.where(accepted: false)
+    group_users.each do |group_user|
+      members << group_user.user
+    end
+    members
+  end
+
   self.per_page = 16
 
   def self.search(search)
