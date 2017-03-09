@@ -38,7 +38,7 @@ class Group < ApplicationRecord
     if search && search != ""
       Group.all.where(title: "#{search}")
     else
-      Group.all.where(is_searchable: true)
+      Group.all.where(hidden: false)
     end
   end
 

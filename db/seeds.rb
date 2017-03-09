@@ -33,14 +33,14 @@ user = User.create(email: "BrickThorn@aol.com", username: "BrickThorn")
 user = User.create(email: "ChampMan@aol.com", username: "ChampMan")
 user = User.create(email: "FrogPrince@aol.com", username: "FrogPrince")
 
-Group.create(title: "Collabowrite Feedback", description: "feedback for Collabowrite", is_private: true, is_searchable: false)
+Group.create(title: "Collabowrite Feedback", description: "feedback for Collabowrite", is_private: true, hidden: false)
 GroupUser.create(user_id: 1, group_id: 1, mod: true, accepted: true)
 30.times do
 	is_private = rand(2)
 	is_private == 1 ? is_private = true : is_private = false
-	is_searchable = rand(2)
-	is_searchable == 1 ? is_searchable = true : is_searchable = false
-	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, is_searchable: is_searchable)
+	hidden = rand(2)
+	hidden == 1 ? hidden = true : hidden = false
+	group = Group.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph, is_private: is_private, hidden: hidden)
 	user = rand(User.all.length) + 1
 	GroupUser.create(user_id: user, group_id: group.id, mod: true, accepted: true) if !GroupUser.where(user_id: user, group_id: group.id).first
 end
