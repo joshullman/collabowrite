@@ -15,6 +15,10 @@
  *= require hint
  */
 
+ .time {
+ 	font-size: 12px;
+ }
+
 .user_thumb img {
 	height: 100px;
 	width: auto;

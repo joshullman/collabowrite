@@ -45,7 +45,7 @@
 							</div>
 							<%= link_to comment.user.username, comment.user %>
 							<br>
-							<%= comment.created_at %>
+							<span class="time"><%= comment.created_at.strftime('%I:%M%P %m/%d/%y') %></span>
 							<% if comment.user == current_user %>
 		            <br>
 		            <%= link_to 'Delete', comment_path(id: comment, script_id: @script.id), method: :delete %>

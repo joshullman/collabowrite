@@ -45,6 +45,8 @@
             <br>
             <span class="title"><%= link_to script.title, script %></span>
             <br>
+            <span class="time"><%= script.group_scripts.where(group_id: @group).first.created_at.strftime("%m/%d/%y") %></span>
+            <br>
             By: <%= link_to script.user.username, script.user %>
             <br>
             <%= script.logline %>
@@ -82,8 +84,8 @@
           </div>
           <%= link_to comment.user.username, comment.user %>
           <br>
-          <%= comment.created_at %>
-          <% if comment.user == current_user %>
+          <span class="time"><%= comment.created_at.strftime('%I:%M%P %m/%d/%y') %></span>
+          <% if comment.user == current_user %><
             <br>
             <%= link_to 'Delete', comment_path(id: comment, group_id: @group.id), method: :delete %>
           <% end %>
