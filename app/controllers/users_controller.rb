@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       @scripts.flatten!.uniq!
     end
     p @user.accepted_groups
-    @groups = @user.accepted_groups.paginate(:page => params[:page]).sort_by {|group| group.title}
+    @groups = @user.accepted_groups.sort_by {|group| group.title}.paginate(:page => params[:page])
   end
 
   def login
