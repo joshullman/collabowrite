@@ -18,10 +18,10 @@
 		<iframe src=<%="#{@script.pdf.url}#toolbar=0"%> class="script_frame"></iframe>
 		<br>
 		<div class="script_comments_container">
-			<span class="title">Notes</span>
+			<span class="title">Notes (<%= @script.comments.length %>)</span>
 			<br>
 
-			<% if @script.user != current_user %>
+			<% if @script.user != current_user || @script.public_comments == true %>
 				<div class="comment">
 				  <div class="comment_info">
 				  	<div class="user_thumb">
@@ -57,8 +57,6 @@
 					</div>
 					<br>
 				<% end %>
-			<% else %>
-				No notes yet!
 			<% end %>
 		</div>
 	<% else %>
