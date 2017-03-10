@@ -24,16 +24,24 @@
 .group_thumb img {
 	height: 100px;
 	width: auto;
+	margin-left: -10%;
+}
+
+.group_thumb_container {
+	text-align: center;
+	border-radius: 5%;
+	background-color: black;
+}
+
+.group_member_count {
+	color: white; 
+	float: left;
+	padding-left: 5%;
 }
 
 .script_thumb img {
 	height: 100px;
 	width: 100px;
-}
-
-.group_thumb {
-	border-radius: 5%;
-	background-color: black;
 }
 
 .user_medium {
