@@ -2,7 +2,9 @@
 
 <div class="group_show">
   <div class="group_info">
-    <%= image_tag(@group.image.url(:original), class: "group_medium") %>
+    <div class="group_medium">
+      <%= image_tag(@group.image.url(:original)) %>
+    </div>
     <h1><%= @group.title %></h1>
     <p style="width: 50%; margin: auto;"><%= @group.description %></p>
   </div>
