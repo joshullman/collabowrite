@@ -49,32 +49,33 @@
     <span class="title" style="text-align: center;"><%= link_to 'Create a Group', new_group_path %></span>
     <p style="text-align: center;">Join a group to see them displayed here!</p>
   <% elsif !@groups.empty? %>
-      <% @groups.each_slice(4) do |group_row| %>
-        <div class="group_row">
-          <% group_row.each do |group| %>
-            <div class="group">
-              <div class="group_thumb_container">
-                <%= link_to image_tag(group.image.url(:original)), group, class: "group_thumb" %>
-                <div class="group_member_count"><%= group.members.count %></div>
-              </div>
-
-              <span class="title"><%= link_to group.title, group %></span>
-              <br>
-              <% if group.users.include?(current_user) %>
-                <span class="button"><%= link_to "Leave Group", group_user_path(user: current_user, group: group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></span>
-              <% else %>
-                <% if group.pending?(current_user) %>
-                  (Request Pending...)
-                <% elsif group.is_private %>
-                  (<%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>)
-                <% else %>
-                  (<%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>)
-                <% end %>
-              <% end %>
+    <% @groups.each_slice(4) do |group_row| %>
+      <div class="group_row">
+        <% group_row.each do |group| %>
+          <div class="group">
+            <div class="group_thumb_container">
+              <%= link_to image_tag(group.image.url(:original)), group, class: "group_thumb" %>
+              <div class="group_member_count"><%= group.members.count %></div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+
+            <span class="title"><%= link_to group.title, group %></span>
+            <br>
+            <% if group.users.include?(current_user) %>
+              <span class="button"><%= link_to "Leave Group", group_user_path(user: current_user, group: group), method: :delete, data: {confirm: "Are you sure you want to leave the group?"} %></span>
+            <% else %>
+              <% if group.pending?(current_user) %>
+                (Request Pending...)
+              <% elsif group.is_private %>
+                (<%= link_to 'Request to Join', group_users_path(user: current_user, group: group, accepted: false), method: :create %>)
+              <% else %>
+                (<%= link_to 'Join Group', group_users_path(user: current_user, group: group, accepted: true), method: :create %>)
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= will_paginate @groups %>
   <% else %>
     <p>This User hasn't joined any groups!</p>
   <% end %>
